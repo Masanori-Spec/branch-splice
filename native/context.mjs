@@ -15,9 +15,9 @@ export async function context(){
  await editor.cache.save('contentTypeCache',[]);
  await editor.cache.save('contentTypeCacheUpdate',Date.now());
  await editor.cache.save('contentHubMetadataUpdate',Date.now());
- await editor.cache.save('contentHubMetadata',{});
+ await editor.cache.save('contentHubMetadata',{levels:[],languages:[],licenses:[],disciplines:[]});
  await editor.cache.save('contentHubMetadataUpdate-en',Date.now());
- await editor.cache.save('contentHubMetadata-en',{});
+ await editor.cache.save('contentHubMetadata-en',{levels:[],languages:[],licenses:[],disciplines:[]});
  const player=new H5P.H5PPlayer(editor.libraryStorage,editor.contentStorage,config,undefined,undefined,(key,language)=>t(key,{lng:language}));
  return {editor,player,config,i18next};
 }
