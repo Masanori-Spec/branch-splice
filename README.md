@@ -2,7 +2,7 @@
 
 Connect independently authored H5P Branching Scenario modules without rebuilding their internal branches. Inspect every resulting route and image mapping, then download one editable H5P plus a JSON provenance manifest and readable connection report.
 
-**Application candidate: merged-output browser/native acceptance is still pending.** The genuine upstream-editor single-node and three-module fixture gates passed in [run37239898535](https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535). The archive/merger suite passes 66 tests (including 34 merger tests); its two 12-node CLI outputs pass the independently frozen 4-route/6-route oracle and corrupted-route/media negative controls. These static results do not substitute for actual application downloads and native edit/replay.
+**Application candidate: merged-output browser/native acceptance is still pending.** The genuine upstream-editor single-node and three-module fixture gates passed in [run37239898535](https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535). The archive/merger suite passes 67 tests (including 34 merger tests and a final-HTML bundling regression); its two 12-node CLI outputs pass the independently frozen 4-route/6-route oracle and corrupted-route/media negative controls. These static results do not substitute for actual application downloads and native edit/replay.
 
 ## Try locally
 
