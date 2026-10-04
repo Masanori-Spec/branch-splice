@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23153e39%27/%3E%3Cpath d=%27M9 25V7m0 9h7a7 7 0 0 0 7-7m-14 7h7a7 7 0 0 1 7 7%27 fill=%27none%27 stroke=%27%23f8f6ef%27 stroke-width=%273%27/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#153e39">
+  <meta name="description" content="Compose bounded H5P Branching Scenario modules locally. Inspect routes, preserve source media, and export an editable package.">
+  <title>BranchSplice · H5P Module Composer</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace" data-i18n="skip">ワークスペースへ移動</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="BranchSplice home">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 25V7m0 9h8a8 8 0 0 0 8-8m-16 8h8a8 8 0 0 1 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="8" cy="7" r="3" fill="currentColor"/><circle cx="8" cy="25" r="3" fill="currentColor"/><circle cx="24" cy="7" r="3" fill="currentColor"/><circle cx="24" cy="25" r="3" fill="currentColor"/></svg>
+      <span>Branch<span class="brand-light">Splice</span><small>H5P MODULE COMPOSER</small></span>
+    </a>
+    <div class="header-actions">
+      <span class="privacy-badge"><span class="status-dot"></span><span data-i18n="local">ローカル処理のみ</span></span>
+      <div class="language-switch" role="group" aria-label="Interface language">
+        <button type="button" data-lang="ja" lang="ja" aria-pressed="true">日本語</button>
+        <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-cross">✳</span> EDITABLE BY DESIGN</p>
+        <h1 id="hero-title" data-i18n="heroTitle">シナリオを、<br>つないで育てる。</h1>
+        <p class="hero-description" data-i18n="heroDescription">別々につくった H5P 教材を、ひとつの分岐シナリオに。ルートと画像を保ち、つないだ後も編集できる形で。</p>
+        <div class="hero-buttons">
+          <button type="button" class="button primary" id="choose-files-button"><span aria-hidden="true">＋</span><span data-i18n="chooseFiles">H5P ファイルを選ぶ</span></button>
+          <a class="button quiet" id="input-guide-link" href="#input-guide"><span data-i18n="inputGuideLink">入力の準備について</span><span aria-hidden="true">↘</span></a>
+        </div>
+        <p class="hero-note" data-i18n="heroNote">アカウント不要。教材ファイルは、このブラウザの中だけで処理します。</p>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="illustration-topline"><span>COMPOSE, WITHOUT FLATTENING</span><span>01—03</span></div>
+        <div class="diagram">
+          <div class="diagram-card diagram-host"><span class="diagram-letter">A</span><div><span class="diagram-kicker">HOST / START</span><strong>Orientation</strong><span class="mini-nodes"><i></i><i></i><i></i></span></div><span class="diagram-port"></span></div>
+          <div class="diagram-line line-upper"></div><div class="diagram-line line-lower"></div>
+          <div class="diagram-card diagram-donor donor-b"><span class="diagram-letter">B</span><div><span class="diagram-kicker">MODULE</span><strong>Registration</strong><span class="mini-nodes"><i></i><i></i><i></i></span></div></div>
+          <div class="diagram-card diagram-donor donor-c"><span class="diagram-letter">C</span><div><span class="diagram-kicker">MODULE</span><strong>Room guide</strong><span class="mini-nodes"><i></i><i></i><i></i></span></div></div>
+        </div>
+        <div class="illustration-caption"><span class="illustration-check">✓</span><span data-i18n="illustrationCaption">素材のまま、ひとつの教材へ</span><span class="illustration-file">.h5p</span></div>
+      </div>
+    </section>
+
+    <div class="scope-strip"><span class="scope-tag">PINNED PROFILE</span><span>Lumi 10.0.4 <b>·</b> Core 1.27 <b>·</b> Branching Scenario 1.8.14</span><a href="#scope" data-i18n="scopeLink">対応範囲を確認 ↘</a></div>
+
+    <div class="workbench" id="workspace">
+      <div id="status-message" class="notice" role="status" aria-live="polite" hidden></div>
+      <section class="stage input-stage" aria-labelledby="input-title">
+        <div class="section-heading">
+          <div><p class="section-kicker"><span>01</span><span data-i18n="inputKicker">INPUT MODULES</span></p><h2 id="input-title" data-i18n="inputTitle">素材を並べる</h2><p class="section-description" data-i18n="inputDescription">同じ対応プロファイルの教材を 2〜5 個。最初の教材がホストになります。</p></div>
+          <button type="button" class="text-button" id="reset-button" disabled><span aria-hidden="true">↺</span><span data-i18n="reset">最初から</span></button>
+        </div>
+        <div class="upload-zone" id="drop-zone">
+          <span class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div class="upload-copy"><strong data-i18n="dropTitle">H5P ファイルをここにドロップ</strong><span data-i18n="dropHint">2〜5 個をまとめて選択 · 読み込み直すと現在の素材を置き換えます</span></div>
+          <button type="button" class="button secondary small" id="upload-button" data-i18n="browseFiles">ファイルを選ぶ</button>
+          <input id="file-input" type="file" accept=".h5p" multiple hidden aria-label="H5P files">
+        </div>
+        <aside class="input-guide" id="input-guide" aria-labelledby="input-guide-title">
+          <span class="input-guide-symbol" aria-hidden="true">i</span><div><h3 id="input-guide-title" data-i18n="inputGuideTitle">お持ちの教材から、始めましょう</h3><p data-i18n="inputGuideDescription">Lumi 10.0.4 / Core 1.27 / Branching Scenario 1.8.14 の同一プロファイルから書き出した H5P を 2〜5 個用意してください。開始画面を残す教材を最初に選び、追加素材の開始画面は空にします。</p><p class="input-guide-note" data-i18n="noBundledExamples">サンプル H5P は同梱していません。1 ファイル 32 MiB 以下・合計 64 MiB 以下。選択した教材はブラウザの外へ送信されません。</p></div>
+        </aside>
+        <div id="modules" class="module-grid"></div>
+        <div id="host-retained" class="host-retained" hidden></div>
+      </section>
+
+      <section class="stage connection-stage" aria-labelledby="connection-title">
+        <div class="section-heading"><div><p class="section-kicker"><span>02</span><span data-i18n="connectionKicker">CONNECT EXITS</span></p><h2 id="connection-title" data-i18n="connectionTitle">終点の、その先をつなぐ</h2><p class="section-description" data-i18n="connectionDescription">フィードバックのない終点から、別の素材の先頭（ノード 0）へ。内部の分岐はそのまま残ります。</p></div><span class="count-badge" id="connection-count">0 CONNECTIONS</span></div>
+        <div id="connection-empty" class="empty-state"><span class="empty-symbol" aria-hidden="true">↳</span><strong data-i18n="connectionEmptyTitle">まずは素材を読み込みましょう</strong><p data-i18n="connectionEmptyDescription">対応する H5P を 2〜5 個選ぶと、各素材の終点と接続先を設定できます。</p></div>
+        <div id="connection-workspace" class="connection-workspace" hidden>
+          <div class="connection-editor"><div id="exit-groups"></div></div>
+          <aside class="connection-overview" aria-labelledby="overview-title"><p class="eyebrow" data-i18n="overviewKicker">COMPOSITION PLAN</p><h3 id="overview-title" data-i18n="overviewTitle">つながりの見取り図</h3><div id="connection-map"></div><p class="aside-note" data-i18n="sharedNote">同じ素材への接続が増えても、ノードと画像は一度だけ取り込みます。</p></aside>
+        </div>
+        <div class="validate-bar"><p><span aria-hidden="true">⌁</span><span data-i18n="validateHint">最大 60 ノード・512 ルート。循環や未接続の素材は書き出せません。</span></p><button type="button" class="button primary" id="validate-button" disabled><span data-i18n="validate">接続を検証する</span><span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <section class="stage result-stage" id="result-stage" aria-labelledby="result-title">
+        <div class="section-heading"><div><p class="section-kicker"><span>03</span><span data-i18n="exportKicker">VERIFY & EXPORT</span></p><h2 id="result-title" data-i18n="resultTitle">確かめて、持ち出す</h2><p class="section-description" data-i18n="resultDescription">全ルート・ノード対応・画像の由来を確認。H5P と検証記録をまとめて手元へ。</p></div><span class="validation-state" id="validation-state" data-i18n="notValidated">未検証</span></div>
+        <div class="result-empty" id="result-empty"><span aria-hidden="true">◎</span><p data-i18n="resultEmpty">接続の検証が完了すると、ここに構成とダウンロードが表示されます。</p></div>
+        <div id="results" hidden>
+          <div class="metrics" id="metrics"></div>
+          <div class="export-box"><div><strong data-i18n="exportReady">編集できる H5P と、確認できる記録。</strong><p data-i18n="exportReadyNote">元ファイルは変更しません。取り込み先では、対応範囲を確認してご利用ください。</p></div><div class="download-actions"><button type="button" class="button primary" id="download-h5p"><span aria-hidden="true">↓</span><span data-i18n="downloadH5p">H5P をダウンロード</span></button><div class="download-secondary"><button type="button" class="text-button" id="download-manifest" data-i18n="downloadManifest">JSON マニフェスト ↓</button><button type="button" class="text-button" id="download-report" data-i18n="downloadReport">テキストレポート ↓</button></div></div></div>
+          <div class="inspection"><div class="inspection-tabs" role="tablist" aria-label="Output inspection"><button type="button" id="tab-routes" role="tab" aria-controls="panel-routes" aria-selected="true" tabindex="0" data-panel="routes" data-i18n="tabRoutes">全ルート</button><button type="button" id="tab-nodes" role="tab" aria-controls="panel-nodes" aria-selected="false" tabindex="-1" data-panel="nodes" data-i18n="tabNodes">ノード対応</button><button type="button" id="tab-assets" role="tab" aria-controls="panel-assets" aria-selected="false" tabindex="-1" data-panel="assets" data-i18n="tabAssets">画像と由来</button><button type="button" id="tab-record" role="tab" aria-controls="panel-record" aria-selected="false" tabindex="-1" data-panel="record" data-i18n="tabRecord">検証記録</button></div><div class="inspection-panel" id="panel-routes" role="tabpanel" aria-labelledby="tab-routes" tabindex="0"></div><div class="inspection-panel" id="panel-nodes" role="tabpanel" aria-labelledby="tab-nodes" tabindex="0" hidden></div><div class="inspection-panel" id="panel-assets" role="tabpanel" aria-labelledby="tab-assets" tabindex="0" hidden></div><div class="inspection-panel" id="panel-record" role="tabpanel" aria-labelledby="tab-record" tabindex="0" hidden></div></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="scope-section" id="scope" aria-labelledby="scope-title"><div class="scope-intro"><p class="eyebrow">BOUNDED, ON PURPOSE</p><h2 id="scope-title" data-i18n="scopeTitle">小さく定めて、<br>確かにつなぐ。</h2><p data-i18n="scopeDescription">BranchSplice は、対応範囲を絞った教材構成ツールです。検証対象外の設定は、黙って変換せずに止めます。</p></div><div class="scope-details"><div><h3 data-i18n="supportedTitle">このプロファイルでできること</h3><p data-i18n="supportedDescription">Branching Question・Advanced Text・Image。2〜5 素材、合計 60 ノード以下、全 512 ルート以下。ホストの開始画面を保持し、追加素材の開始画面は空である必要があります。</p></div><div><h3 data-i18n="unsupportedTitle">対応範囲の外</h3><p data-i18n="unsupportedDescription">得点、後戻り、ランダム化、他のコンテンツ形式。教材間で異なる全体設定・終了画面・ライブラリは受け付けません。Lumi Desktop や Core 1.28、すべての H5P 環境での互換性を保証するものではありません。</p></div><div><h3 data-i18n="privacyTitle">教材を外へ送らない</h3><p data-i18n="privacyDescription">処理とプレビューはブラウザ内。アップロード、分析通信、学習者データ、学習記録の保存はありません。画面を閉じると作業内容は失われます。</p></div></div></section>
+  </main>
+  <footer class="site-footer"><a class="footer-brand" href="#top">BranchSplice<span>↟</span></a><span data-i18n="footerLine">つなぐ構造を、見える形に。</span><span class="footer-version">BOUNDED COMPOSER · v0.1</span></footer>
+  <noscript><p class="notice error">JavaScript is required. Files are processed locally in your browser.</p></noscript>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
