@@ -1,0 +1,13 @@
+# Native verification harness security boundary
+
+This is a disposable local/CI consumer-verification harness, not a production H5P hosting service. It binds to127.0.0.1, accepts only the local Host/Origin, rejects cross-site requests, uses one synthetic author, and has no authentication, learning records or user-state backend. Only the generated synthetic fixtures and validated demo outputs should be imported during these tests. Do not expose the port, load confidential content, or use this as an arbitrary-package upload service.
+
+The official Lumi server/editor version is deliberately pinned for a reproducible interoperability test. Its transitive npm dependencies include known advisories. A local npm audit after the initial gate reported11 advisories, including2 critical ones in optional translation adapters. Both adapters were removed: translations are read from fixed installed-package English JSON paths and loaded in memory; HTTP language detection and missing-key write endpoints are absent. The direct Express dependency was patched from4.21.2 to4.22.3, verified as available from the official npm registry. The Lumi adapter itself still pins an older transitive Express version.
+
+The follow-up audit reports9 advisories:0 critical,7 high,2 moderate. Remaining chains include the Lumi adapter's Express4.21.2/body-parser/qs/path-to-regexp, the server's jsonpath/underscore, and image-size. The image-size advisories concern ICNS/JXL/HEIF parsing; test images here are fixed synthetic PNGs. This scoped usage does not establish that the underlying packages are secure for untrusted network traffic. No blanket audit-fix or untested major dependency override was applied.
+
+The native setup downloads only hash-pinned official packages. Its71-library dependency closure is checked, and the native server's own getLibraryData path must resolve the full Branching Scenario editor before browser testing. The first official Hub bundle alone was insufficient: its CoursePresentation editor declared InteractiveVideo1.27, so the matching unmodified1.27.9/Core1.27 official package was added from the separate Hub bundle. No versions or dependency declarations were falsified.
+
+Browser editing is local-only after setup: the harness preloads empty local content-type/content-hub caches so the editor does not refresh the remote catalog, disables usage statistics and content state/finished-data persistence, and the test records network/JavaScript errors and external browser requests.
+
+Audit counts are observations of the pinned lockfile, not a security certification. Reassess before any broader deployment or real-user use.
