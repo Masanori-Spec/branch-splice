@@ -23,6 +23,16 @@ jobs:
         run: npm run test:native
         env:
           CHROME_BIN: /usr/bin/google-chrome
+      - name: Author and replay the three four-node modules in the native editor
+        run: node native/author-fixtures.mjs
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+      - name: Independently inspect native-authored normalized collision fixtures
+        run: |
+          python3 -m unittest discover -s oracle -p 'test_*.py' -q
+          python3 oracle/verify_package.py artifacts/native-fixtures/module-A.h5p --case module_a --report artifacts/native-fixtures/module-A-oracle.json
+          python3 oracle/verify_package.py artifacts/native-fixtures/module-B.h5p --case module_b --report artifacts/native-fixtures/module-B-oracle.json
+          python3 oracle/verify_package.py artifacts/native-fixtures/module-C.h5p --case module_c --report artifacts/native-fixtures/module-C-oracle.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -32,3 +42,28 @@ jobs:
             artifacts/native-setup/
             native/library-profile.json
           if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: branchsplice-native-module-A
+          path: artifacts/native-fixtures/module-A*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: branchsplice-native-module-B
+          path: artifacts/native-fixtures/module-B*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: branchsplice-native-module-C
+          path: artifacts/native-fixtures/module-C*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: branchsplice-native-fixture-diagnostics
+          path: |
+            artifacts/native-fixtures/trace.zip
+            artifacts/native-fixtures/report.json
+            artifacts/native-fixtures/server.log
+            artifacts/native-fixtures/browser-command.json
+            artifacts/native-fixtures/failure*
