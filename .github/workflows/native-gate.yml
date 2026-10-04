@@ -36,34 +36,12 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: branchsplice-native-gate
+          name: native-feasibility-sanitized-evidence
           path: |
-            artifacts/native-gate/
-            artifacts/native-setup/
-            native/library-profile.json
+            artifacts/native-gate/*.png
+            artifacts/native-gate/report.json
+            artifacts/native-gate/browser-command.json
+            artifacts/native-fixtures/*.png
+            artifacts/native-fixtures/*.json
+            artifacts/native-setup/*.json
           if-no-files-found: error
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: branchsplice-native-module-A
-          path: artifacts/native-fixtures/module-A*
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: branchsplice-native-module-B
-          path: artifacts/native-fixtures/module-B*
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: branchsplice-native-module-C
-          path: artifacts/native-fixtures/module-C*
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: branchsplice-native-fixture-diagnostics
-          path: |
-            artifacts/native-fixtures/trace.zip
-            artifacts/native-fixtures/report.json
-            artifacts/native-fixtures/server.log
-            artifacts/native-fixtures/browser-command.json
-            artifacts/native-fixtures/failure*
