@@ -23,10 +23,14 @@
     "H5P.Image": "1.1.22"
   },
   "editorLibrary": "H5PEditor.BranchingScenario 1.5.7",
-  "status": "native-browser-gate-not-yet-run",
+  "status": "native-single-node-and-A-B-C-author-import-edit-export-replay-passed; merged-product-acceptance-pending",
   "supplementalLibraries": {
     "url": "https://api.h5p.org/v1/content-types/H5P.InteractiveVideo",
     "sha256": "b1bc055a58c9fe903ab7ab63af4700dae06ccc2d754ae1c3491670acb631c535",
     "purpose": "Completes the unmodified CoursePresentation editor dependency on InteractiveVideo1.27.9/Core1.27"
+  },
+  "nativeFixtureEvidence": {
+    "commit": "7e096b9e356661b868771112d9c569077e07393f",
+    "run": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535"
   }
 }
