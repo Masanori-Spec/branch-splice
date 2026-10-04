@@ -14,6 +14,7 @@ const report={gate:'initial-native-author-export-reopen',complete:false,core:'1.
 await context.route('**/*',route=>{const u=route.request().url();if(/^(http:\/\/127\.0\.0\.1:8080|data:|blob:|about:)/.test(u))return route.continue();report.blockedExternalRequests.push(u);return route.abort('blockedbyclient')});
 page.on('response',r=>{if(!r.url().startsWith('http://127.0.0.1:8080'))report.external.push(r.url())});
 page.on('response',r=>{if(r.status()>=400)report.httpErrors.push({status:r.status(),url:r.url()})});page.on('console',m=>{if(['error','warning'].includes(m.type()))report.consoleWarnings.push({type:m.type(),text:m.text()})});
+async function stableVisible(target){await target.waitFor();let previous=null,stable=0;for(let n=0;n<80;n++){const b=await target.boundingBox(),v=page.viewportSize();if(b&&b.x>=0&&b.y>=0&&b.x+b.width<=v.width+1&&b.y+b.height<=v.height+1&&previous&&['x','y','width','height'].every(k=>Math.abs(b[k]-previous[k])<0.25))stable++;else stable=0;if(stable>=3)return;previous=b;await page.waitForTimeout(100);}throw Error('Edited native text is not stable and fully in viewport')}
 async function dump(name){await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});await fs.writeFile(path.join(out,name+'.html'),await page.content());for(const [i,f]of page.frames().entries())await fs.writeFile(path.join(out,name+`-frame${i}.html`),await f.content());}
 try{
  await page.goto('http://127.0.0.1:8080/h5p/new');
@@ -39,7 +40,7 @@ try{
  await page.waitForFunction(()=>document.querySelector('.h5p-branching-scenario,iframe.h5p-iframe'));
  const play=await page.locator('iframe.h5p-iframe').count()?page.frameLocator('iframe.h5p-iframe'):page;
  await play.locator('.h5p-start-button').click();
- await play.getByText('NATIVE GATE EDITED',{exact:true}).waitFor();await dump('06-native-edited-replay');
+ await stableVisible(play.getByText('NATIVE GATE EDITED',{exact:true}));await dump('06-native-edited-replay');
  report.steps.push('Imported native text edited in upstream editor, saved and visibly replayed');
  const secondDownload=page.waitForEvent('download');await page.goto(`http://127.0.0.1:8080/export/${editedId}`).catch(e=>{if(!/Download is starting/.test(e.message))throw e});
  const second=await secondDownload;const roundtrip=path.join(out,'native-roundtrip.h5p');await second.saveAs(roundtrip);
