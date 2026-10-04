@@ -8,4 +8,4 @@ Lumi10.0.4 always random-suffixes uploaded/imported media names. To exercise a r
 
 Each native-roundtripped module is replayed through both choices, requiring the exact text/choice/ending content, loaded image dimensions and loaded-image SHA-256. Screenshots wait for stable, fully in-viewport content. The normalized collision inputs are the canonical merge fixtures; the native originals and native roundtrip downloads remain distinct evidence.
 
-The current scripts are still under verification. Refer to exact CI results and artifact reports; this method document is not a claim that every stage has passed.
+The initial authoring/reimport/replay gate passed at run37239898535. Merged-product acceptance is tracked separately. Public source now retains only exact authored JSON, original PNGs and file-entry hashes. Local reconstruction combines these with verified official package downloads and verifies the full accepted native file-entry set. Reconstructed H5Ps, upstream package bytes, traces and HTML snapshots remain temporary local/CI material and are not published as workflow artifacts. Public evidence contains screenshots and factual reports.
