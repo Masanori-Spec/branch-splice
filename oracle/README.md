@@ -111,3 +111,7 @@ Native reimport may rename an image path. Merged cases intentionally follow the
 typed image reference and assert frozen bytes rather than filename spelling,
 both before and after native editing. Original module_b/module_c donor checks
 still require `content/images/map.png`. No hash or alias constraint was weakened.
+
+## Sanitized public evidence
+
+`sanitize_evidence.py` first applies this independent oracle to an actual downloaded package, then writes only our authored JSON entry bytes, the source archive SHA-256, and every file-entry size/hash. It never publishes library bytes. `scripts/reconstruct-evidence.mjs` can reconstruct an equivalent private ZIP locally from those JSON entries, the synthetic PNGs and official libraries already acquired by native:setup. Every entry hash must match; ZIP-container hashes may differ. Raw H5Ps, traces and HTML snapshots stay on the ephemeral verification runner. Public artifacts are explicit JSON/text summaries and screenshots only.

@@ -1,5 +1,5 @@
 {
-  "recorded_utc": "2026-10-04T21:49:28Z",
+  "recorded_utc": "2026-10-04T23:25:00Z",
   "checker_selftests": {
     "status": "PASS",
     "tests": 39,
@@ -11,28 +11,141 @@
     "evidence": "expected-manifest.json and contract-freeze.json"
   },
   "native_editor_authored_module_archives": {
-    "status": "NOT_RUN",
-    "reason": "Native browser gate pending; final exported module artifacts not supplied"
+    "status": "PASS",
+    "scope": "Independent static checks of canonical native-authored inputs. B/C collision paths were normalized after export; native reimport evidence is separately attributed below.",
+    "modules": [
+      {
+        "module": "A",
+        "archive": "fixtures/h5p/module-A.h5p",
+        "archive_sha256": "2a4f5db91a446b2cbe159aebed74c5df04f379e5876f17eaba24059118564932",
+        "status": "PASS",
+        "report": "reports/module-A.json",
+        "nodes": 4,
+        "complete_traces": 2
+      },
+      {
+        "module": "B",
+        "archive": "fixtures/h5p/module-B.h5p",
+        "archive_sha256": "1eb911ab9c23087cd619a070d84e36df82a55ed00f3481317325cd3e8c960ea0",
+        "status": "PASS",
+        "report": "reports/module-B.json",
+        "nodes": 4,
+        "complete_traces": 2
+      },
+      {
+        "module": "C",
+        "archive": "fixtures/h5p/module-C.h5p",
+        "archive_sha256": "e650a7382583dc78af98b101641bca3e419d2453c1c79e49ff94c33ba57a2c51",
+        "status": "PASS",
+        "report": "reports/module-C.json",
+        "nodes": 4,
+        "complete_traces": 2
+      }
+    ],
+    "manifest_file_sha256": "fa309ef29793d5b6e4884c022c8a895579d1eae467356e78c13847023b796c9d",
+    "handwritten_manifest_changed": false
   },
   "first_splice_product_archive": {
-    "status": "NOT_RUN",
-    "reason": "Product merge engine/artifact does not yet exist"
+    "status": "PASS",
+    "artifact_origin": "Engine CLI output; not a UI download or native re-export",
+    "archive": "generated/first.h5p",
+    "archive_sha256": "11f241dfb82ac841cde8e2f6055fabb9bc06cc6d9a548bbe0b2adb8e95faba22",
+    "node_count": 12,
+    "trace_count": 4,
+    "oracle_report": "reports/first-engine.json",
+    "provenance_report": "reports/first-engine-provenance.json",
+    "provenance_assertions": 152,
+    "scope": "Independent static frozen-manifest checks and source/output ZIP hash, node mapping, image mapping, metadata and report consistency checks only"
   },
   "shared_c_product_archive": {
-    "status": "NOT_RUN",
-    "reason": "Product merge engine/artifact does not yet exist"
+    "status": "PASS",
+    "artifact_origin": "Engine CLI output; not a UI download or native re-export",
+    "archive": "generated/shared.h5p",
+    "archive_sha256": "ae5685cc35c08f76c3b4a8697b3028c0a04e510f96965734b80cf6c34221d1c0",
+    "node_count": 12,
+    "trace_count": 6,
+    "oracle_report": "reports/shared-engine.json",
+    "provenance_report": "reports/shared-engine-provenance.json",
+    "provenance_assertions": 156,
+    "scope": "Independent static frozen-manifest checks and source/output ZIP hash, node mapping, image mapping, metadata and report consistency checks only"
   },
   "real_artifact_negative_controls": {
-    "status": "NOT_RUN",
-    "reason": "Require a passing real product artifact before mutation"
+    "status": "PASS",
+    "artifact_origin": "Actual engine CLI outputs, original variant",
+    "reports": [
+      "reports/first-engine-mutations.json",
+      "reports/shared-engine-mutations.json"
+    ],
+    "controls": 4,
+    "result": "On each original artifact, valid in-bounds A2 graph corruption and wrong colliding image bytes were rejected for the intended reason. Baseline artifacts passed first.",
+    "native_edited_variants": "NOT_RUN"
   },
   "native_player_editor_gate": {
-    "status": "NOT_RUN_BY_THIS_ORACLE",
-    "reason": "Owned separately by native gate task; static oracle cannot substitute for browser evidence"
+    "status": "PASS_REPORTED_BY_NATIVE_GATE",
+    "scope": "Native authoring, reimport and six original-module routes only. Merged-product native execution remains pending.",
+    "run_url": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535",
+    "commit": "7e096b9e356661b868771112d9c569077e07393f",
+    "local_evidence_directory": "../branch-splice-output/run6-fixtures",
+    "report_sha256": "104a3776a20dd05652380ad689dd7c94b99a70cec9ca2e64afc753100777f20f",
+    "independent_report_review": "Read report.json; PASS, six module routes, matching fixture archive hashes, and empty page/external/blocked/attempted request error lists confirmed.",
+    "screenshot_pixel_review": "Native screenshots, graph and distinct image pixels reviewed and accepted by the native evidence publisher. No personal screenshot/pixel review or browser execution claimed by this oracle.",
+    "personally_executed_browser_gate": false,
+    "personally_reviewed_native_pixels": false
   },
   "contract_revision": 2,
   "native_edited_merged_archives": {
     "status": "NOT_RUN",
-    "reason": "Native-edit expectations frozen before native fixture/merged artifacts exist"
+    "reason": "Native-edited merged artifacts have not yet been supplied"
+  },
+  "ui_export_downloads": {
+    "status": "NOT_RUN",
+    "reason": "Actual merged artifacts downloaded through product UI have not been supplied"
+  },
+  "native_merged_browser_gate": {
+    "status": "NOT_RUN",
+    "reason": "Merged-artifact native reimport, route playback, native edit/save/re-export evidence pending; original module gate is separate"
+  },
+  "current_manifest_file_sha256": "fa309ef29793d5b6e4884c022c8a895579d1eae467356e78c13847023b796c9d",
+  "reusable_provenance_checker": {
+    "status": "PASS",
+    "implementation": "verify_provenance.py",
+    "instructions": "provenance-README.md",
+    "selftests": {
+      "status": "PASS",
+      "tests": 31,
+      "evidence": "provenance-selftest-output.txt"
+    },
+    "combined_oracle_selftests": {
+      "status": "PASS",
+      "tests": 70,
+      "evidence": "all-selftest-output.txt"
+    },
+    "actual_artifact_checks": [
+      {
+        "artifact": "generated/first.h5p",
+        "artifact_origin": "Current engine CLI export from privately reconstructed fixtures",
+        "status": "PASS",
+        "archive_sha256": "db3c4c0eb645ce99ae2006698355e200e2513625d38dde1666e919346ce153a9",
+        "report": "reports/first-reusable-provenance.json",
+        "expected_outcome_report": "reports/first-current-expected.json",
+        "assertions": 8353,
+        "library_resource_files": 2532,
+        "library_declarations": 70,
+        "text_report_checked": true
+      },
+      {
+        "artifact": "generated/shared.h5p",
+        "artifact_origin": "Current engine CLI export from privately reconstructed fixtures",
+        "status": "PASS",
+        "archive_sha256": "db88768d0eb3aebc9411aefc501f72607c3328f5d3fbac56cf930daac2487a9c",
+        "report": "reports/shared-reusable-provenance.json",
+        "expected_outcome_report": "reports/shared-current-expected.json",
+        "assertions": 8391,
+        "library_resource_files": 2532,
+        "library_declarations": 70,
+        "text_report_checked": true
+      }
+    ],
+    "browser_native_execution": "NOT_RUN_BY_THIS_CHECKER"
   }
 }

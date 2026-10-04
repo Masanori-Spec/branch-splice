@@ -37,8 +37,39 @@ test_source_module_still_requires_collision_path (test_oracle.OracleTests.test_s
 test_unpinned_images_are_blocked (test_oracle.OracleTests.test_unpinned_images_are_blocked) ... ok
 test_unwrapped_ending_title_rejected_under_revised_contract (test_oracle.OracleTests.test_unwrapped_ending_title_rejected_under_revised_contract) ... ok
 test_zero_feedback_score_is_not_default_ending (test_oracle.OracleTests.test_zero_feedback_score_is_not_default_ending) ... ok
+test_arbitrary_distinct_input_ids_in_source_order (test_provenance.ProvenanceTests.test_arbitrary_distinct_input_ids_in_source_order) ... ok
+test_donor_reuses_a_source_uuid (test_provenance.ProvenanceTests.test_donor_reuses_a_source_uuid) ... ok
+test_duplicate_connection (test_provenance.ProvenanceTests.test_duplicate_connection) ... ok
+test_duplicate_input_ids_rejected (test_provenance.ProvenanceTests.test_duplicate_input_ids_rejected) ... ok
+test_duplicate_manifest_keys (test_provenance.ProvenanceTests.test_duplicate_manifest_keys) ... ok
+test_duplicate_output_uuid (test_provenance.ProvenanceTests.test_duplicate_output_uuid) ... ok
+test_extra_content_file (test_provenance.ProvenanceTests.test_extra_content_file) ... ok
+test_extra_library_file (test_provenance.ProvenanceTests.test_extra_library_file) ... ok
+test_false_reported_route (test_provenance.ProvenanceTests.test_false_reported_route) ... ok
+test_false_summary (test_provenance.ProvenanceTests.test_false_summary) ... ok
+test_forged_input_metadata (test_provenance.ProvenanceTests.test_forged_input_metadata) ... ok
+test_global_change (test_provenance.ProvenanceTests.test_global_change) ... ok
+test_host_uuid_changed_even_with_matching_hashes (test_provenance.ProvenanceTests.test_host_uuid_changed_even_with_matching_hashes) ... ok
+test_library_byte_tamper (test_provenance.ProvenanceTests.test_library_byte_tamper) ... ok
+test_manifest_cannot_swap_input_archive_associations (test_provenance.ProvenanceTests.test_manifest_cannot_swap_input_archive_associations) ... ok
+test_missing_library_file (test_provenance.ProvenanceTests.test_missing_library_file) ... ok
+test_missing_transitive_dependency (test_provenance.ProvenanceTests.test_missing_transitive_dependency) ... ok
+test_package_metadata_change (test_provenance.ProvenanceTests.test_package_metadata_change) ... ok
+test_source_path_order_is_authoritative (test_provenance.ProvenanceTests.test_source_path_order_is_authoritative) ... ok
+test_synthetic_baseline (test_provenance.ProvenanceTests.test_synthetic_baseline) ... ok
+test_undeclared_feedback_change (test_provenance.ProvenanceTests.test_undeclared_feedback_change) ... ok
+test_undeclared_metadata_change (test_provenance.ProvenanceTests.test_undeclared_metadata_change) ... ok
+test_undeclared_target_change (test_provenance.ProvenanceTests.test_undeclared_target_change) ... ok
+test_undeclared_text_change_even_with_matching_hashes (test_provenance.ProvenanceTests.test_undeclared_text_change_even_with_matching_hashes) ... ok
+test_untyped_asset_pointer (test_provenance.ProvenanceTests.test_untyped_asset_pointer) ... ok
+test_wrong_declared_connection_mapping (test_provenance.ProvenanceTests.test_wrong_declared_connection_mapping) ... ok
+test_wrong_image_dimensions (test_provenance.ProvenanceTests.test_wrong_image_dimensions) ... ok
+test_wrong_media_bytes_even_with_matching_archive_hash (test_provenance.ProvenanceTests.test_wrong_media_bytes_even_with_matching_archive_hash) ... ok
+test_wrong_output_hash (test_provenance.ProvenanceTests.test_wrong_output_hash) ... ok
+test_wrong_source_archive_hash (test_provenance.ProvenanceTests.test_wrong_source_archive_hash) ... ok
+test_wrong_text_report (test_provenance.ProvenanceTests.test_wrong_text_report) ... ok
 
 ----------------------------------------------------------------------
-Ran 39 tests in 0.097s
+Ran 70 tests in 0.226s
 
 OK
