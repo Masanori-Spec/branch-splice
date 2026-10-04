@@ -1,0 +1,33 @@
+name: Native H5P feasibility gate
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-editor:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.16.0'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run native:setup
+      - run: google-chrome --version
+      - name: Official editor author export and reopen in sandboxed browser
+        run: npm run test:native
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: branchsplice-native-gate
+          path: |
+            artifacts/native-gate/
+            native/library-profile.json
+          if-no-files-found: error
