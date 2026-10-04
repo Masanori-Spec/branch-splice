@@ -3,22 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Bounded native H5P branch module composition feasibility gate",
+  "description": "Compose bounded native H5P Branching Scenario modules with route and media provenance",
   "scripts": {
     "native:setup": "node native/setup.mjs",
     "native:server": "node native/server.mjs",
-    "test:native": "node native/gate.mjs"
+    "test:native": "node native/gate.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:native-server": "node --test native/server.test.mjs",
+    "fixture": "node scripts/export-examples.mjs",
+    "test:oracle": "python3 -m unittest discover -s oracle -p \"test_*.py\" -q",
+    "check": "npm test && npm run test:oracle && npm run build && npm run fixture",
+    "serve": "node scripts/serve.mjs",
+    "test:browser": "node tests/browser-test.mjs",
+    "test:native-merged": "node native/consume-merged.mjs",
+    "fixture:prepare": "node scripts/prepare-fixtures.mjs"
   },
   "dependencies": {
-    "@lumieducation/h5p-server": "10.0.4",
     "@lumieducation/h5p-express": "10.0.4",
+    "@lumieducation/h5p-server": "10.0.4",
     "express": "4.22.3",
     "express-fileupload": "1.5.2",
+    "fflate": "0.8.2",
     "i18next": "24.2.2",
-    "jszip": "3.10.1"
+    "jszip": "3.10.1",
+    "parse5": "7.3.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.56.0"
+    "@playwright/test": "1.56.0",
+    "esbuild": "0.25.11"
   },
   "engines": {
     "node": ">=22"

@@ -3,3 +3,7 @@ native/cache/
 native/runtime/
 artifacts/
 research/
+
+generated/
+
+fixtures/h5p/*.h5p
