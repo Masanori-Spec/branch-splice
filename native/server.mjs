@@ -1,6 +1,5 @@
 import express from 'express';
 import upload from 'express-fileupload';
-import middleware from 'i18next-http-middleware';
 import {h5pAjaxExpressRouter} from '@lumieducation/h5p-express';
 import defaultRendererModule from '@lumieducation/h5p-server/build/src/renderers/default.js';
 import {context,user,runtime} from './context.mjs';
@@ -10,8 +9,10 @@ const {editor,player,config,i18next}=await context();
 const renderer=defaultRendererModule.default??defaultRendererModule;
 editor.setRenderer(model=>renderer(model).replaceAll('new ns.Editor(undefined, undefined, $editor[0])',"new ns.Editor('H5P.BranchingScenario 1.8', undefined, $editor[0])").replaceAll('$create.show();','window.nativeEditor=h5peditor; $create.show();'));
 const app=express();
+app.use((req,res,next)=>{const port=process.env.PORT??'8080';if(![`127.0.0.1:${port}`,`localhost:${port}`].includes(req.get('host'))||req.get('sec-fetch-site')==='cross-site'||(req.get('origin')&&req.get('origin')!==`http://127.0.0.1:${port}`&&req.get('origin')!==`http://localhost:${port}`))return res.status(403).send('Local same-origin verification only');next()});
 app.use(express.json({limit:'20mb'}));app.use(express.urlencoded({extended:true}));app.use(upload({limits:{fileSize:128*1024*1024},abortOnLimit:true}));
-app.use((req,res,next)=>{req.user=user;next()});app.use(middleware.handle(i18next));
+app.use((req,res,next)=>{req.user=user;next()});app.use((req,res,next)=>{req.language='en';req.languages=['en'];req.t=i18next.getFixedT('en');next()});
+app.get('/favicon.ico',(req,res)=>res.status(204).end());
 app.get('/health',(req,res)=>res.json({ok:true,core:config.coreApiVersion}));
 app.get('/',(req,res)=>res.send('<html><head><meta charset="utf-8"><title>BranchSplice native feasibility</title></head><body><h1>Native H5P authoring gate</h1><p>Official Lumi10.0.4 / Core1.27 / BranchingScenario1.8.14</p><a href="/h5p/new">Create native scenario</a><form action="/import" method="post" enctype="multipart/form-data"><label>Import editable H5P <input type="file" name="package" accept=".h5p"></label><button>Import</button></form></body></html>'));
 app.post('/import',async(req,res,next)=>{try{const r=await editor.uploadPackage(req.files.package.data,user);const id=await editor.saveOrUpdateContent(undefined,r.parameters,r.metadata,`${r.metadata.mainLibrary} ${r.metadata.preloadedDependencies.find(x=>x.machineName===r.metadata.mainLibrary).majorVersion}.${r.metadata.preloadedDependencies.find(x=>x.machineName===r.metadata.mainLibrary).minorVersion}`,user);res.redirect(`/h5p/edit/${id}`);}catch(e){next(e)}});

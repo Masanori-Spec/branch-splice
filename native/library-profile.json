@@ -5688,5 +5688,149 @@
       "images/ui-icons_cd0a0a_256x240.png": "1e32c6dbf5d3fd342f27a78aa881550d6412aa207f48468724a6a15402b6041b",
       "library.json": "3201ac973483f542c186d5fd9c0deefa57d15ee53c9afac79a1df6aa3ee9d478"
     }
+  },
+  "H5P.InteractiveVideo-1.27": {
+    "metadata": {
+      "title": "Interactive Video",
+      "description": "Put texts, tasks and other medias on top of your video.",
+      "license": "MIT",
+      "contentType": "Media",
+      "majorVersion": 1,
+      "minorVersion": 27,
+      "patchVersion": 9,
+      "machineName": "H5P.InteractiveVideo",
+      "author": "Joubel",
+      "embedTypes": [
+        "iframe"
+      ],
+      "runnable": 1,
+      "fullscreen": 1,
+      "coreApi": {
+        "majorVersion": 1,
+        "minorVersion": 27
+      },
+      "preloadedJs": [
+        {
+          "path": "dist/h5p-interactive-video.js"
+        }
+      ],
+      "preloadedCss": [
+        {
+          "path": "dist/h5p-interactive-video.css"
+        }
+      ],
+      "preloadedDependencies": [
+        {
+          "machineName": "FontAwesome",
+          "majorVersion": 4,
+          "minorVersion": 5
+        },
+        {
+          "machineName": "jQuery.ui",
+          "majorVersion": 1,
+          "minorVersion": 10
+        },
+        {
+          "machineName": "H5P.Video",
+          "majorVersion": 1,
+          "minorVersion": 6
+        },
+        {
+          "machineName": "H5P.DragNBar",
+          "majorVersion": 1,
+          "minorVersion": 5
+        }
+      ],
+      "editorDependencies": [
+        {
+          "machineName": "H5P.InteractiveVideo",
+          "majorVersion": 1,
+          "minorVersion": 27
+        },
+        {
+          "machineName": "H5PEditor.Wizard",
+          "majorVersion": 1,
+          "minorVersion": 2
+        },
+        {
+          "machineName": "H5PEditor.InteractiveVideo",
+          "majorVersion": 1,
+          "minorVersion": 25
+        }
+      ]
+    },
+    "files": {
+      "LICENCE.md": "f248c02ec3ac51a7e8910bba33905fe10c10176b7576d055bacfc42279eefb89",
+      "dist/0386180d2c55e2844156.svg": "0ea34af5efe5d67a9503341668fe8bcf5926a95cecde6169719ecb7bb289f896",
+      "dist/0523b21db4fb141802eb.svg": "1cc597be9f647a2ab35ff1c0d3500b4ddf03fe79929ea8378683bd76a98d7daf",
+      "dist/148dd4b2be364a98aa94.ttf": "8c0709c1c7272e528025498ac4c7daac28dae0d8cd86774968d7da459fcc8629",
+      "dist/2964b9be6b458abf853e.svg": "67a1167b70a6f1857c6e28211d5f3d1a5cc81d4afd2acbd9a1be3950c5060d64",
+      "dist/2c1d7735fb3a8606aa39.svg": "93e51944f1bd8334ffdf36af13e1c9741bdc2cbee3833f7ac4fa40ee14dd5872",
+      "dist/57a364e45933155f7ff4.svg": "0a5572f8d5a53d488a5368add4f5ce6b24617378cb7980587a167c554a7eb574",
+      "dist/5b65587a77cdcbb1ea7c.eot": "a3ec35fb859e8ddf7147ac5d67a2d0a95d98e06a779ebaf0073907bb116b3427",
+      "dist/647e851f992904967e7a.svg": "d9c21118878eb000cc027664d6fdf26530531b8f3f7504dfe29750fb135fc972",
+      "dist/6ced57368341a72eda50.woff": "385249891196ec3b16fc8e9789a2b5035860668c549d4bc76e3707fefaf5f816",
+      "dist/847fac874773e4bcf919.woff": "1b1709b5aeda96a4ba3c9d2dcde31b8832b32ad4e1fc6c03dd81d5ad5f9d4cd0",
+      "dist/8cb26f6444c4d872ab4e.ttf": "9baffab0038ba1d76e363aa95c3213048a39a054982aa4912b9b0aee6e06f217",
+      "dist/c7c399ebddbdf28d5c69.svg": "84bfb0c5459ce93b9c88fdd5d04b107d8b092964aeb9829553d668994af85a12",
+      "dist/e1ccd6330b33c4b5f6e3.svg": "c2308a9035a16cf3fe7135291fb70c717e75df313ae3b2f3858ffbf36f56dc7e",
+      "dist/fbbfaa4c26edaada18ff.eot": "0e019eaeae4604083cff5aede5c0754f11524f5ca131964345b5c37360765405",
+      "dist/h5p-interactive-video.css": "90ec7f6fd9578108cff4fb347428f0fceb18396f10e18992dd6201a3dbb5f69e",
+      "dist/h5p-interactive-video.js": "d1872e46f54f7b0a3e5e336f7d1152dcd76da9ca9080288de3d418c09eca2bea",
+      "icon.svg": "39acc6fe107997b92b28e1e71c9341e959091ee4f557010e61ee36bab99488fd",
+      "language/af.json": "f3fd768a4f6daa52ef8c446377379b985e51b4c093d36733a27ba46b3cffe915",
+      "language/ar.json": "501abf2e5a339398c9d0050c2259a9b962791b81b67bca9835de72b1eb04f711",
+      "language/bg.json": "3a5a7efbfa0836e91f0357ac0a54b4449f6d6f2a874143d3dee6cf5146f9f7e3",
+      "language/bn.json": "a3c10b9940307c798c1dcdd85d6a6761666e6449833e5e1f4967a350d12c48f2",
+      "language/bs.json": "5428bbcd781c551eba15038036f4ea92c07ac32fbc194b0e2ae9bd3214665c5d",
+      "language/ca.json": "860f80513bc2a67f4d9f65e468eb8047de8915931a7a8beccc306244277456e9",
+      "language/cs.json": "30ee9e7710a5970dda78e4560c83e13ce7c15943134d190b40b9e1af300657e8",
+      "language/da.json": "8de3bcf120d3d80a23428e8fb6fd6e6481ba0632058665528d2d20fbb09edefa",
+      "language/de.json": "b6a916bd72a91398fc4a63aba20923fef576ed5d6dccf9b5124c4e9104fb92f3",
+      "language/el.json": "cec14062ccc1524d42f997f5d995712c60d843f2b5d739f443c0d51456c5751c",
+      "language/es-mx.json": "1afbdf078d42e32e0bc3e29902a8d359bd150f0beaecdae11ce1e0858c2d7f40",
+      "language/es.json": "620bab05e2c58ae7b43b91938e2da1adfa15bb0aa65f6dbf90a17f52d8170f58",
+      "language/et.json": "1cf848811d6163c969e64804c89221a3672d31eecfc8451d4bef5e13f378b9de",
+      "language/eu.json": "e8a9e32a0356bedb1448c302bbe91dcef859fcd9221847749b60d54b90f71e30",
+      "language/fa.json": "c41cbfa287b8530d9e9f88400f5c9931820198b6b0663052f435e7ded7c2e0fb",
+      "language/fi.json": "454adf850f2b2251a09afdd66ff8a28f19f2115355ced144c1a2b260dcc73dc7",
+      "language/fr.json": "b5c993cacfd0a0695a9fc0fe78bda897aca4624628ae3bde74fa182a7a594d4c",
+      "language/gl.json": "68e1c09a7faffa71982d669547f891f4532d58f64b7c94e634a4d92850bfc909",
+      "language/he.json": "f891f89c7e418c5701895c0f2b8b0820d9a6b696ccdcd2120d3fe79c7b28445a",
+      "language/hr.json": "6b7aad5048368fa904367abb8ed6a3c738e3bd3f12e03e9632cafcc3d73ad5e7",
+      "language/hu.json": "8d40c384621c9f74305ed331b3804cc153792b89251aacefb18d8ca784f9360e",
+      "language/it.json": "7d2804678500c8b44616326ff8bb94b07efbf92d255401b536520255b5d20a2d",
+      "language/ja.json": "a25a78e77af1fcf5ff0c70993eae61fd140e2b24e1570176dc6da896dbd99fc3",
+      "language/ka.json": "b3e3fd34fd5026a36b9e96876e31bc19ec959ed4facb9379c162cce731d6b150",
+      "language/km.json": "4e8a73cd77f97b6f240324f147ab696db0c5beb6ee1f401574aab123cc412387",
+      "language/ko.json": "5502b853c7e7169bd6a358e6e1ae07cd2d899d29b961bd439ddc1fcf2532f127",
+      "language/lt.json": "c083fe190827c00486420c71b5362b0cbc55b0912cbf2b28c8e6d067549ff820",
+      "language/lv.json": "6e9b8a694792376cb43a4ac8fafab2b90b33370b103b6b6e906bd211b91360b8",
+      "language/mn.json": "bb8b13b0ecc0e7492a85448b01838242161930bccc745228e9f9a3b47d349612",
+      "language/nb.json": "13c3c660cf143b88829a38477f7bd0da62f974e495df044b576e67e82388545b",
+      "language/nl.json": "7a926d6b47d69fe3a6269477a07c3c72fcb996f51156dd1c163b82b14463abc4",
+      "language/nn.json": "54388b5c8dc10556a674f70e6cb8d5a0848f69b820db8fbd5ca1091801988f5c",
+      "language/pl.json": "cab2fb7563444d9c74bc93a8961ae2386898961aa962524506ea18e85fe8bbc4",
+      "language/pt-br.json": "ebfd44584be900ad4e7e8abf361c14a55b66b04dbb65c1d273484d6e967a392d",
+      "language/pt.json": "ca40c50c2218176ce0f36f04a7bb4875891e1d380f56aeb414fe188bc4644415",
+      "language/ru.json": "ba966bd918879e1a17bfcf21beb4242ec17b24312600c412726c6b18618f6d0d",
+      "language/sk.json": "a3ea9185193e72c14f2123eb7b27d478f2f1250f32b6bbb7a5af5ebb7b292a8c",
+      "language/sl.json": "fb86520dc709257d298c7b2c7dc8e5d968e8af50db00ddb90b0dd4d44c3df29f",
+      "language/sv.json": "4e93d128f93b62f30c7328bd59aaa70794d469b264646983bf3843350760c568",
+      "language/sw.json": "44b710edf8881dfe3d082083f0ce535770a71762a573ff89fd141f0c03440ae8",
+      "language/te.json": "1ab14dbecdbe50ad1ba87f5b14e4d733ace7cc23d83ea1206a22b21747c74c24",
+      "language/tg.json": "6a8835c77c9fb28e500b18c5f18579d079bd2da395938f1da59d71c65e4dcb5c",
+      "language/tr.json": "90ea7b5c70280616ed0acfe7923cddb3141cd95032fbbaf8255f5a4b12ff8229",
+      "language/uk.json": "97148657ae174475c570826048881d86187dfb4037694b18a6be403a12b1e9a9",
+      "language/zh-cn.json": "c5df286072a8b48fd4f4345065642f6373fa9767fb30b1419b060978366c9a46",
+      "language/zh-hans.json": "c5758db9dc2292dc9de68683fdd6384acde9bf16b6444ae4612b8359728fa750",
+      "language/zh-hant.json": "c952ab2fcdd7502567e23a25ce31c297308ba9689b8344e9f7670f744c827ecb",
+      "language/zh-tw.json": "2acd017c3125bacfa8ffd1a81e4c9fcef4de78ee2ff00d852cc3db99c6398454",
+      "library.json": "c89391b357dc5656b2e7eeec1b49c111afdce043b0765dbdf0843ef5a524c312",
+      "package-lock.json": "e5cdafb88c021efbd4a0d8f3fe4d943b2e4453ff17a0be6a58c95636fa72ec5f",
+      "presave.js": "ed5d39d24b847d21ade8480b8493b79480e27f63bd4caa3bab4fa4142d373c12",
+      "semantics.json": "3dbecdd600c460e651e30af58077c55692d3d4b1e37c38ba569cfad56e181bf6",
+      "upgrades.js": "049726e0206a687e85493f700cce95ac14eaaf0b30b2d160dd120b66a21e6b1a"
+    }
   }
 }
