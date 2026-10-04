@@ -1,0 +1,33 @@
+{
+  "method": "Genuine upstream-editor authoring, download, reimport, native save/export and two complete native replay routes per module. Donor packaging paths normalized to images/map.png with image bytes unchanged.",
+  "verifiedRun": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535",
+  "commit": "7e096b9e356661b868771112d9c569077e07393f",
+  "modules": {
+    "A": "2a4f5db91a446b2cbe159aebed74c5df04f379e5876f17eaba24059118564932",
+    "B": "1eb911ab9c23087cd619a070d84e36df82a55ed00f3481317325cd3e8c960ea0",
+    "C": "e650a7382583dc78af98b101641bca3e419d2453c1c79e49ff94c33ba57a2c51"
+  },
+  "reconstruction": {
+    "method": "Official library entry bytes plus exact authored JSON and original synthetic PNGs; deterministic local repack, not a redistributed native archive",
+    "entrySets": {
+      "A": {
+        "sha256": "9de7535cb5f24a03f02872f16096937bd7f4dc29dbeff1f7ef8792ae3ebb1509",
+        "files": 2534,
+        "contentJsonSha256": "0b6e2dd75c49141e6837de8ceab5a7ddc76d86223461ab38d1af670f302212c9",
+        "metadataJsonSha256": "c4198c0e7a01a59e0b19a8338d3588c911337e4335830e8e7340a15c52c7c3fe"
+      },
+      "B": {
+        "sha256": "89aa31adc1e77900852376ff12c7bd62829327f77bd52a98e025c72de0de69c8",
+        "files": 2535,
+        "contentJsonSha256": "cda268450ab92a87d45336e831d8fb2ce2242e8e17bbbc728b1ef9d75542b5a0",
+        "metadataJsonSha256": "f7779f607af0feb715b569b51d0288396e1773db8004162abd3464ac9a3b06a9"
+      },
+      "C": {
+        "sha256": "b1be1ffc8b271e5351f8ce4f9847cf20a56acf5c3436e9e3fafd927bd943e2d4",
+        "files": 2535,
+        "contentJsonSha256": "ce8ea9d043bcd296483ef160f681c17c1f6808bbb4ad3fc34e253d5d75d1e84f",
+        "metadataJsonSha256": "04a509c29a9fb417cd16a5689d69cd2a659339d425791a74741d1128a4511294"
+      }
+    }
+  }
+}
