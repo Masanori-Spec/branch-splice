@@ -17,3 +17,5 @@ The browser test uses sandboxed Chrome on Ubuntu22.04. The native server is a lo
 The harness has no HTTP language-detection or filesystem translation adapter; English translations are loaded into memory from fixed installed-package paths. It seeds local catalog caches and does not fetch the Hub during browser editing. See docs/native-security.md for the bounded dependency risk.
 
 Native dependency licensing: Lumi H5P Node.js GPL-3.0-or-later; upstream H5P core/editor and content libraries retain their own licenses. Dependencies are downloaded from official sources for local verification and are not relicensed here.
+
+The upstream editor’s optional remote Help embed is blocked by a same-origin CSP and the browser gate. Only ephemeral editor onboarding preferences are stored; native playback is anonymous. Blocked external attempts and actual external responses are reported separately.
