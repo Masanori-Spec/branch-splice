@@ -47,7 +47,7 @@ async function add(kind,position,token){
  if(kind==='text')await rich('.editor-overlay-semantics .field-name-text',v.text);
  if(kind==='branchingquestion'){
   await rich('.editor-overlay-semantics .field-name-question',v.question);
-  const inputs=f.locator('.editor-overlay-semantics .field-name-alternatives .field-name-text input');assert.equal(await inputs.count(),2);
+  const inputs=f.locator('.editor-overlay-semantics .h5p-editor-branching-question .field-name-answer .field-name-text input');assert.equal(await inputs.count(),2);
   for(let i=0;i<2;i++){await expandAncestors(inputs.nth(i));await inputs.nth(i).fill(v.choices[i]);}
  }
  if(kind==='image'){
