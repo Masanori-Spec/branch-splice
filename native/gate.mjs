@@ -15,6 +15,19 @@ await context.route('**/*',route=>{const u=route.request().url();if(/^(http:\/\/
 page.on('response',r=>{if(!r.url().startsWith('http://127.0.0.1:8080'))report.external.push(r.url())});
 page.on('response',r=>{if(r.status()>=400)report.httpErrors.push({status:r.status(),url:r.url()})});page.on('console',m=>{if(['error','warning'].includes(m.type()))report.consoleWarnings.push({type:m.type(),text:m.text()})});
 async function stableVisible(target){await target.waitFor();let previous=null,stable=0;for(let n=0;n<80;n++){const b=await target.boundingBox(),v=page.viewportSize();if(b&&b.x>=0&&b.y>=0&&b.x+b.width<=v.width+1&&b.y+b.height<=v.height+1&&previous&&['x','y','width','height'].every(k=>Math.abs(b[k]-previous[k])<0.25))stable++;else stable=0;if(stable>=3)return;previous=b;await page.waitForTimeout(100);}throw Error('Edited native text is not stable and fully in viewport')}
+async function rich(frame,html){
+ const field=frame.locator('.editor-overlay-semantics .field-name-text');
+ const groups=field.locator('xpath=ancestor::fieldset[contains(@class,"group")]');for(let i=0;i<await groups.count();i++){const title=groups.nth(i).locator(':scope > .title');if(await title.count()&&await title.getAttribute('aria-expanded')==='false')await title.click();}
+ await stableVisible(field);
+ for(let attempt=0;attempt<2;attempt++){
+  await field.locator('[contenteditable=true]').first().click();
+  try{await page.waitForFunction(()=>{const current=window.nativeEditor?.iframeWindow?.H5PEditor?.Html?.current;return current?.ckeditor?.state==='ready'&&current.$item?.closest('.editor-overlay-semantics .field-name-text').length;},null,{timeout:6000});break}catch(error){if(attempt===1)throw error;await page.locator('#save-h5p').focus();}
+ }
+ // Use the selected native CKEditor public field API, never routing parameters.
+ await page.evaluate(value=>window.nativeEditor.iframeWindow.H5PEditor.Html.current.ckeditor.setData(value),html);
+ assert.equal(await page.evaluate(()=>window.nativeEditor.iframeWindow.H5PEditor.Html.current.ckeditor.getData()),html);
+ await page.locator('#save-h5p').focus();
+}
 async function dump(name){await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});await fs.writeFile(path.join(out,name+'.html'),await page.content());for(const [i,f]of page.frames().entries())await fs.writeFile(path.join(out,name+`-frame${i}.html`),await f.content());}
 try{
  await page.goto('http://127.0.0.1:8080/h5p/new');
@@ -23,16 +36,14 @@ try{
  await f.getByRole('button',{name:'I got it',exact:true}).click();await f.locator('.tour-button').waitFor({state:'hidden'});report.steps.push('Official native BranchingScenario editor loaded');await dump('01-editor-empty');
  await f.locator('.field-name-extraTitle input:visible').first().fill('BranchSplice native feasibility');
  await f.locator('.content-type-buttons li.advancedtext').click();await f.locator('.dropzone').first().click();
- await f.locator('.editor-overlay-semantics .field-name-text [contenteditable=true]').first().click();
- await f.locator('.editor-overlay-semantics .ck-editor__editable').fill('NATIVE GATE ORIGINAL');
+ await rich(f,'<p>NATIVE GATE ORIGINAL</p>');
  await dump('02-native-text-authoring');
  await f.locator('.editor-overlay-header button.button-blue').click();
  await page.locator('#save-h5p').click();await page.waitForURL(/\/h5p\/play\//);report.steps.push('New text authored in native editor and saved');await dump('03-native-player');
  const id=page.url().split('/').at(-1);const d=page.waitForEvent('download');await page.goto(`http://127.0.0.1:8080/export/${id}`).catch(e=>{if(!/Download is starting/.test(e.message))throw e});const downloaded=await d;const exported=path.join(out,'native-authored.h5p');await downloaded.saveAs(exported);const z=await JSZip.loadAsync(await fs.readFile(exported));const params=JSON.parse(await z.file('content/content.json').async('string'));assert.equal(params.branchingScenario.content.length,1);assert(params.branchingScenario.content[0].type.params.text.includes('NATIVE GATE ORIGINAL'));report.steps.push('Actual .h5p browser download has native-authored text');
  await page.goto('http://127.0.0.1:8080/');await page.locator('input[type=file]').setInputFiles(exported);await page.getByRole('button',{name:'Import',exact:true}).click();await page.waitForURL(/\/h5p\/edit\//);await f.locator('.content-type-buttons li.advancedtext').waitFor();await dump('04-native-reopened');report.steps.push('Actual browser download reimported into native editor');
  await f.locator('.nodetree .draggable-wrapper').first().dblclick();
- await f.locator('.editor-overlay-semantics .field-name-text [contenteditable=true]').first().click();
- await f.locator('.editor-overlay-semantics .ck-editor__editable').fill('NATIVE GATE EDITED');
+ await rich(f,'<p>NATIVE GATE EDITED</p>');
  await f.locator('.editor-overlay-header button.button-blue').click();
  await page.locator('#save-h5p').click();await page.waitForURL(/\/h5p\/play\//);
  const editedId=page.url().split('/').at(-1);
