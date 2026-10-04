@@ -1,0 +1,10 @@
+{
+  "server": "@lumieducation/h5p-server@10.0.4",
+  "coreApi": {"major":1,"minor":27},
+  "core": {"url":"https://github.com/h5p/h5p-php-library/archive/829524eaf81fe3f3a295d0e843812be4735f51fc.zip","sha256":"1bdb85ba056fcabb35acbcdabdfe9790f10b7733783ec95c34d365efc4196ddb"},
+  "editor": {"url":"https://github.com/h5p/h5p-editor-php-library/archive/80b3b281ee9d064b563f242e8ee7a0026b5bf205.zip","sha256":"b5e6c41ccda203c43b10a8c508766547052dfc33050d2f9f523f8568a1fcb90f"},
+  "libraries": {"url":"https://api.h5p.org/v1/content-types/H5P.BranchingScenario","sha256":"b83c7656f9892e949ef9129039d6cc47d811274a03a03bc0ddd15bbf3aeffc6a"},
+  "contentLibraries": {"H5P.BranchingScenario":"1.8.14","H5P.BranchingQuestion":"1.0.20","H5P.AdvancedText":"1.1.14","H5P.Image":"1.1.22"},
+  "editorLibrary": "H5PEditor.BranchingScenario 1.5.7",
+  "status": "native-browser-gate-not-yet-run"
+}
