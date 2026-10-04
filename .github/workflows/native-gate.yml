@@ -29,5 +29,6 @@ jobs:
           name: branchsplice-native-gate
           path: |
             artifacts/native-gate/
+            artifacts/native-setup/
             native/library-profile.json
           if-no-files-found: error
