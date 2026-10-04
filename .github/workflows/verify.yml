@@ -1,0 +1,91 @@
+name: Verify BranchSplice product
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        node: ['22', '24.16.0']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run native:setup
+      - run: npm run fixture:prepare
+      - run: npm run check
+  browser-native:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.16.0'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - run: npm run build
+      - run: npm run native:setup
+      - run: npm run fixture:prepare
+      - run: npm run test:native-server
+      - run: google-chrome --version
+      - name: Real standalone UI, worker, downloads, desktop and mobile checks
+        timeout-minutes: 10
+        run: npm run test:browser
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+      - name: Native import, edit, save, download and replay all four and six routes
+        timeout-minutes: 15
+        run: npm run test:native-merged
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: standalone-application
+          path: |
+            dist/index.html
+            THIRD_PARTY_NOTICES.md
+            generated/standalone-inputs.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-sanitized-evidence
+          path: |
+            artifacts/browser/*.png
+            artifacts/browser/report.json
+            artifacts/browser/browser-command.json
+            artifacts/browser/*.manifest.json
+            artifacts/browser/*.report.txt
+            artifacts/browser/*-oracle.json
+            artifacts/browser/*-sanitized.json
+            artifacts/browser/*-provenance.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-merged-sanitized-reports
+          path: |
+            artifacts/native-merged/**/*.json
+            generated/fixture-reconstruction.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-first-screenshots
+          path: artifacts/native-merged/first/**/*.png
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-shared-screenshots
+          path: artifacts/native-merged/shared/**/*.png
