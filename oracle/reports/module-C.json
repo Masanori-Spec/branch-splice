@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "case": "module_c",
+  "variant": "original",
+  "node_count": 4,
+  "trace_count": 2,
+  "traces": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      3
+    ]
+  ],
+  "choice_sequences": [
+    [
+      "Main room"
+    ],
+    [
+      "Quiet room"
+    ]
+  ],
+  "ending": {
+    "title": "<p>Branch complete</p>",
+    "subtitle": "<p>You have reached the end of this branch.</p>"
+  },
+  "screens": [
+    {
+      "index": 0,
+      "fixture_node": "C0",
+      "alt": "Room map",
+      "image_sha256": "c538d3c97b12004b2df166547fe6b77edf74effbde2303ea8c31f6195fb7c152"
+    },
+    {
+      "index": 1,
+      "fixture_node": "C1",
+      "question": "<p>Which room are you going to?</p>",
+      "choices": [
+        "Main room",
+        "Quiet room"
+      ]
+    },
+    {
+      "index": 2,
+      "fixture_node": "C2",
+      "text": "<p>You have reached the main room.</p>"
+    },
+    {
+      "index": 3,
+      "fixture_node": "C3",
+      "text": "<p>You have reached the quiet room.</p>"
+    }
+  ],
+  "images": [
+    {
+      "node": 0,
+      "fixture_image": "room",
+      "archive_path": "content/images/map.png",
+      "sha256": "c538d3c97b12004b2df166547fe6b77edf74effbde2303ea8c31f6195fb7c152"
+    }
+  ],
+  "scope": "Independent static ZIP/JSON and image-byte assertions only",
+  "native_editor_player_status": "NOT_RUN_BY_THIS_ORACLE",
+  "archive": "/workspace/scratch/4396daea8a85/branch-splice-project/fixtures/h5p/module-C.h5p",
+  "archive_sha256": "e650a7382583dc78af98b101641bca3e419d2453c1c79e49ff94c33ba57a2c51",
+  "expected_manifest_sha256": "f674d7fd3b4bbbdbda2b09bd045c4f2d788b8c738c50ea891f2f482e32541862"
+}

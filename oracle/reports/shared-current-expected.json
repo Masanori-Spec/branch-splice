@@ -1,0 +1,198 @@
+{
+  "status": "PASS",
+  "case": "shared_c",
+  "variant": "original",
+  "node_count": 12,
+  "trace_count": 6,
+  "traces": [
+    [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+    ],
+    [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      8,
+      9,
+      11
+    ],
+    [
+      0,
+      1,
+      2,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+    ],
+    [
+      0,
+      1,
+      2,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11
+    ],
+    [
+      0,
+      1,
+      3,
+      8,
+      9,
+      10
+    ],
+    [
+      0,
+      1,
+      3,
+      8,
+      9,
+      11
+    ]
+  ],
+  "choice_sequences": [
+    [
+      "Register for the event",
+      "I have a ticket",
+      "Main room"
+    ],
+    [
+      "Register for the event",
+      "I have a ticket",
+      "Quiet room"
+    ],
+    [
+      "Register for the event",
+      "I need a ticket",
+      "Main room"
+    ],
+    [
+      "Register for the event",
+      "I need a ticket",
+      "Quiet room"
+    ],
+    [
+      "Find the event room",
+      "Main room"
+    ],
+    [
+      "Find the event room",
+      "Quiet room"
+    ]
+  ],
+  "ending": {
+    "title": "<p>Branch complete</p>",
+    "subtitle": "<p>You have reached the end of this branch.</p>"
+  },
+  "screens": [
+    {
+      "index": 0,
+      "fixture_node": "A0",
+      "text": "<p>Welcome to BranchSplice.</p><p>Literal asset-looking text: images/map.png</p>"
+    },
+    {
+      "index": 1,
+      "fixture_node": "A1",
+      "question": "<p>Which task do you need?</p>",
+      "choices": [
+        "Register for the event",
+        "Find the event room"
+      ]
+    },
+    {
+      "index": 2,
+      "fixture_node": "A2",
+      "text": "<p>Registration starts here.</p>"
+    },
+    {
+      "index": 3,
+      "fixture_node": "A3",
+      "text": "<p>Room guidance starts here.</p>"
+    },
+    {
+      "index": 4,
+      "fixture_node": "B0",
+      "alt": "Registration map",
+      "image_sha256": "f355baa1b1ac3d395ee5d5677cd03a2eb098d02020350a053bec14c719c32caf"
+    },
+    {
+      "index": 5,
+      "fixture_node": "B1",
+      "question": "<p>Do you already have a ticket?</p>",
+      "choices": [
+        "I have a ticket",
+        "I need a ticket"
+      ]
+    },
+    {
+      "index": 6,
+      "fixture_node": "B2",
+      "text": "<p>Present your ticket at registration.</p>"
+    },
+    {
+      "index": 7,
+      "fixture_node": "B3",
+      "text": "<p>Collect a ticket at registration.</p>"
+    },
+    {
+      "index": 8,
+      "fixture_node": "C0",
+      "alt": "Room map",
+      "image_sha256": "c538d3c97b12004b2df166547fe6b77edf74effbde2303ea8c31f6195fb7c152"
+    },
+    {
+      "index": 9,
+      "fixture_node": "C1",
+      "question": "<p>Which room are you going to?</p>",
+      "choices": [
+        "Main room",
+        "Quiet room"
+      ]
+    },
+    {
+      "index": 10,
+      "fixture_node": "C2",
+      "text": "<p>You have reached the main room.</p>"
+    },
+    {
+      "index": 11,
+      "fixture_node": "C3",
+      "text": "<p>You have reached the quiet room.</p>"
+    }
+  ],
+  "images": [
+    {
+      "node": 4,
+      "fixture_image": "registration",
+      "archive_path": "content/images/map.png",
+      "sha256": "f355baa1b1ac3d395ee5d5677cd03a2eb098d02020350a053bec14c719c32caf"
+    },
+    {
+      "node": 8,
+      "fixture_image": "room",
+      "archive_path": "content/images/branchsplice-m3-c538d3c97b12004b2df16654.png",
+      "sha256": "c538d3c97b12004b2df166547fe6b77edf74effbde2303ea8c31f6195fb7c152"
+    }
+  ],
+  "scope": "Independent static ZIP/JSON and image-byte assertions only",
+  "native_editor_player_status": "NOT_RUN_BY_THIS_ORACLE",
+  "archive": "/workspace/scratch/4396daea8a85/branch-splice-project/generated/shared.h5p",
+  "archive_sha256": "db88768d0eb3aebc9411aefc501f72607c3328f5d3fbac56cf930daac2487a9c",
+  "expected_manifest_sha256": "f674d7fd3b4bbbdbda2b09bd045c4f2d788b8c738c50ea891f2f482e32541862"
+}

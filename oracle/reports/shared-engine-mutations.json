@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "case": "shared_c",
+  "variant": "original",
+  "baseline_archive_sha256": "ae5685cc35c08f76c3b4a8697b3028c0a04e510f96965734b80cf6c34221d1c0",
+  "negative_controls": [
+    {
+      "mutation": "in_bounds_graph_target",
+      "status": "CORRECTLY_REJECTED",
+      "reason": "node[2] targets: expected [4]; got [8]"
+    },
+    {
+      "mutation": "collision_image_bytes",
+      "status": "CORRECTLY_REJECTED",
+      "reason": "node[4].image_sha256: expected 'f355baa1b1ac3d395ee5d5677cd03a2eb098d02020350a053bec14c719c32caf'; got 'c538d3c97b12004b2df166547fe6b77edf74effbde2303ea8c31f6195fb7c152'"
+    }
+  ],
+  "native_editor_player_status": "NOT_RUN_BY_THIS_ORACLE"
+}

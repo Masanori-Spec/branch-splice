@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "case": "module_a",
+  "variant": "original",
+  "node_count": 4,
+  "trace_count": 2,
+  "traces": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      3
+    ]
+  ],
+  "choice_sequences": [
+    [
+      "Register for the event"
+    ],
+    [
+      "Find the event room"
+    ]
+  ],
+  "ending": {
+    "title": "<p>Branch complete</p>",
+    "subtitle": "<p>You have reached the end of this branch.</p>"
+  },
+  "screens": [
+    {
+      "index": 0,
+      "fixture_node": "A0",
+      "text": "<p>Welcome to BranchSplice.</p><p>Literal asset-looking text: images/map.png</p>"
+    },
+    {
+      "index": 1,
+      "fixture_node": "A1",
+      "question": "<p>Which task do you need?</p>",
+      "choices": [
+        "Register for the event",
+        "Find the event room"
+      ]
+    },
+    {
+      "index": 2,
+      "fixture_node": "A2",
+      "text": "<p>Registration starts here.</p>"
+    },
+    {
+      "index": 3,
+      "fixture_node": "A3",
+      "text": "<p>Room guidance starts here.</p>"
+    }
+  ],
+  "images": [],
+  "scope": "Independent static ZIP/JSON and image-byte assertions only",
+  "native_editor_player_status": "NOT_RUN_BY_THIS_ORACLE",
+  "archive": "/workspace/scratch/4396daea8a85/branch-splice-project/fixtures/h5p/module-A.h5p",
+  "archive_sha256": "2a4f5db91a446b2cbe159aebed74c5df04f379e5876f17eaba24059118564932",
+  "expected_manifest_sha256": "f674d7fd3b4bbbdbda2b09bd045c4f2d788b8c738c50ea891f2f482e32541862"
+}
