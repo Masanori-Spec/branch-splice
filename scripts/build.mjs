@@ -1,0 +1,11 @@
+import fs from'node:fs/promises';import{build}from'esbuild';
+const common={bundle:true,write:false,minify:true,target:['es2022'],platform:'browser',format:'iife',legalComments:'inline',metafile:true};
+const workerBuild=await build({...common,entryPoints:['web/worker.mjs']}),appBuild=await build({...common,entryPoints:['web/app.mjs']});
+const inputs=[...new Set([...Object.keys(workerBuild.metafile.inputs),...Object.keys(appBuild.metafile.inputs)])].sort();if(inputs.some(p=>!p.startsWith('src/')&&!p.startsWith('web/')&&!/^node_modules\/(fflate|parse5|entities)\//.test(p)))throw Error('Unexpected embedded dependency: '+inputs.join(', '));
+await fs.mkdir('generated',{recursive:true});await fs.writeFile('generated/standalone-inputs.json',JSON.stringify({boundary:'No upstream H5P/native package or fixture bytes embedded',inputs},null,2)+'\n');
+const worker=workerBuild.outputFiles[0].text,app=appBuild.outputFiles[0].text;
+const css=await fs.readFile('web/styles.css','utf8');let html=await fs.readFile('web/index.html','utf8');
+const csp="default-src 'none'; script-src 'unsafe-inline' blob:; style-src 'unsafe-inline'; img-src blob: data:; font-src 'self' data:; worker-src blob:; connect-src 'none'; base-uri 'none'; form-action 'none'";
+html=html.replace('<meta charset="UTF-8">',`<meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="${csp}">`).replace('<link rel="stylesheet" href="./styles.css">',`<style>${css}</style>`).replace('<script type="module" src="./app.mjs"></script>',`<script>globalThis.__BRANCHSPLICE_WORKER__=${JSON.stringify(worker).replace(/<\/script/gi,'<\\/script')};</script><script>${app.replace(/<\/script/gi,'<\\/script')}</script>`);
+const notices=await fs.readFile('THIRD_PARTY_NOTICES.md','utf8');html=html.replace('</body>',`<!-- Third-party notices\n${notices.replaceAll('--','—')}\n--></body>`);
+await fs.mkdir('dist',{recursive:true});await fs.writeFile('dist/index.html',html);console.log('Standalone HTML',Buffer.byteLength(html),'bytes');

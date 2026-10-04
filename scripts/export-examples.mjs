@@ -1,0 +1,4 @@
+import fs from 'node:fs/promises';import {readModule}from'../src/archive.mjs';import{compose,exportResult}from'../src/compose.mjs';
+await fs.mkdir('generated',{recursive:true});const modules=await Promise.all(['A','B','C'].map(async(c,i)=>readModule(new Uint8Array(await fs.readFile(`fixtures/h5p/module-${c}.h5p`)),{id:`M${i+1}`,filename:`module-${c}.h5p`})));
+const first=[{fromModule:'M1',fromNode:2,alternative:null,toModule:'M2'},{fromModule:'M1',fromNode:3,alternative:null,toModule:'M3'}];
+for(const[name,connections]of[['first',first],['shared',[...first,{fromModule:'M2',fromNode:2,alternative:null,toModule:'M3'},{fromModule:'M2',fromNode:3,alternative:null,toModule:'M3'}]]]){const r=await compose(modules,connections),e=await exportResult(r);await fs.writeFile(`generated/${name}.h5p`,e.h5p);await fs.writeFile(`generated/${name}.manifest.json`,e.manifestText);await fs.writeFile(`generated/${name}.report.txt`,e.reportText);console.log(name,r.summary)}
