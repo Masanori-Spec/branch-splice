@@ -11,3 +11,7 @@ The native setup downloads only hash-pinned official packages. Its71-library dep
 Browser editing is local-only after setup: the harness preloads empty local content-type/content-hub caches so the editor does not refresh the remote catalog, disables usage statistics and content state/finished-data persistence, and the test records network/JavaScript errors and external browser requests.
 
 Audit counts are observations of the pinned lockfile, not a security certification. Reassess before any broader deployment or real-user use.
+
+A later browser gate showed that the upstream editor eagerly embeds its remote documentation Help tab, even while that tab is hidden. The harness now applies a same-origin CSP and tests also abort all non-local browser routes. Optional remote Help is consequently unavailable; blocked attempts are recorded separately from actual external responses. Tests must show zero external responses.
+
+The editor's normal onboarding tour is dismissed through its visible “I got it” button. Only four allow-listed editor UI-preference booleans are kept in a per-process memory Map at content ID0, not learner state. All other content-user-data routes remain unsupported. The player renderer uses an anonymous client integration, so it does not request or save learner state. Offline catalog metadata exposes the expected four empty arrays, rather than missing fields.
