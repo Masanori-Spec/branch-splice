@@ -1,0 +1,13 @@
+{
+  "frozen_utc": "2026-10-04T21:28:10Z",
+  "expectations_authorship": "Handwritten before product merge engine existed; exact content contract agreed with fixture author before authoring. Only source image hashes added after independent original-byte inspection.",
+  "manifest_file": "expected-manifest.json",
+  "manifest_file_sha256": "fa309ef29793d5b6e4884c022c8a895579d1eae467356e78c13847023b796c9d",
+  "images_pin_source": "Original local fixture PNGs, not product outputs",
+  "product_merged_archive_validation": "NOT_RUN: product artifacts do not exist",
+  "native_editor_player_validation": "NOT_RUN: browser gate pending",
+  "initial_manifest_file_sha256": "041f18b42dcd8c80d9f5cb09733ad1ddbf6f7c54748d51552a324b9a56fcef00",
+  "current_revision": 2,
+  "last_revised_utc": "2026-10-04T21:47:21Z",
+  "revision_provenance": "contract-revisions.json"
+}
