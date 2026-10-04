@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "purpose": "Handwritten pre-engine expectations. This is not generated from product output or product helpers.",
+  "frozen_text_contract_utc": "2026-10-04T21:21:44Z",
+  "profile": {
+    "main_library": "H5P.BranchingScenario",
+    "major_version": 1,
+    "minor_version": 8,
+    "native_patch_target": 14,
+    "default_end_id": -1,
+    "root_behaviour": {
+      "enableBackwardsNavigation": false,
+      "forceContentFinished": false,
+      "randomizeBranchingQuestions": false
+    }
+  },
+  "ending": {
+    "title": "<p>Branch complete</p>",
+    "subtitle": "<p>You have reached the end of this branch.</p>"
+  },
+  "images": {
+    "registration": {
+      "source_module": "B",
+      "source_archive_path": "content/images/map.png",
+      "sha256": "f355baa1b1ac3d395ee5d5677cd03a2eb098d02020350a053bec14c719c32caf",
+      "pin_status": "independently_hashed_original_fixture_bytes",
+      "original_path": "fixtures/registration/map.png",
+      "size_bytes": 180,
+      "width": 96,
+      "height": 64
+    },
+    "room": {
+      "source_module": "C",
+      "source_archive_path": "content/images/map.png",
+      "sha256": "c538d3c97b12004b2df166547fe6b77edf74effbde2303ea8c31f6195fb7c152",
+      "pin_status": "independently_hashed_original_fixture_bytes",
+      "original_path": "fixtures/room/map.png",
+      "size_bytes": 391,
+      "width": 96,
+      "height": 64
+    }
+  },
+  "node_content": {
+    "A0": {
+      "library": "H5P.AdvancedText 1.1",
+      "text": "<p>Welcome to BranchSplice.</p><p>Literal asset-looking text: images/map.png</p>"
+    },
+    "A1": {
+      "library": "H5P.BranchingQuestion 1.0",
+      "question": "<p>Which task do you need?</p>",
+      "choices": [
+        "Register for the event",
+        "Find the event room"
+      ]
+    },
+    "A2": {
+      "library": "H5P.AdvancedText 1.1",
+      "text": "<p>Registration starts here.</p>"
+    },
+    "A3": {
+      "library": "H5P.AdvancedText 1.1",
+      "text": "<p>Room guidance starts here.</p>"
+    },
+    "B0": {
+      "library": "H5P.Image 1.1",
+      "alt": "Registration map",
+      "image": "registration"
+    },
+    "B1": {
+      "library": "H5P.BranchingQuestion 1.0",
+      "question": "<p>Do you already have a ticket?</p>",
+      "choices": [
+        "I have a ticket",
+        "I need a ticket"
+      ]
+    },
+    "B2": {
+      "library": "H5P.AdvancedText 1.1",
+      "text": "<p>Present your ticket at registration.</p>"
+    },
+    "B3": {
+      "library": "H5P.AdvancedText 1.1",
+      "text": "<p>Collect a ticket at registration.</p>"
+    },
+    "C0": {
+      "library": "H5P.Image 1.1",
+      "alt": "Room map",
+      "image": "room"
+    },
+    "C1": {
+      "library": "H5P.BranchingQuestion 1.0",
+      "question": "<p>Which room are you going to?</p>",
+      "choices": [
+        "Main room",
+        "Quiet room"
+      ]
+    },
+    "C2": {
+      "library": "H5P.AdvancedText 1.1",
+      "text": "<p>You have reached the main room.</p>"
+    },
+    "C3": {
+      "library": "H5P.AdvancedText 1.1",
+      "text": "<p>You have reached the quiet room.</p>"
+    }
+  },
+  "cases": {
+    "module_a": {
+      "entry": 0,
+      "nodes": [
+        "A0",
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "targets": [
+        [
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          -1
+        ],
+        [
+          -1
+        ]
+      ],
+      "traces": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3
+        ]
+      ],
+      "choice_sequences": [
+        [
+          "Register for the event"
+        ],
+        [
+          "Find the event room"
+        ]
+      ]
+    },
+    "module_b": {
+      "entry": 0,
+      "nodes": [
+        "B0",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "targets": [
+        [
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          -1
+        ],
+        [
+          -1
+        ]
+      ],
+      "traces": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3
+        ]
+      ],
+      "choice_sequences": [
+        [
+          "I have a ticket"
+        ],
+        [
+          "I need a ticket"
+        ]
+      ],
+      "require_source_collision_path": true
+    },
+    "module_c": {
+      "entry": 0,
+      "nodes": [
+        "C0",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "targets": [
+        [
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          -1
+        ],
+        [
+          -1
+        ]
+      ],
+      "traces": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3
+        ]
+      ],
+      "choice_sequences": [
+        [
+          "Main room"
+        ],
+        [
+          "Quiet room"
+        ]
+      ],
+      "require_source_collision_path": true
+    },
+    "first_splice": {
+      "entry": 0,
+      "nodes": [
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "C0",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "targets": [
+        [
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          8
+        ],
+        [
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          -1
+        ],
+        [
+          -1
+        ],
+        [
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          -1
+        ],
+        [
+          -1
+        ]
+      ],
+      "traces": [
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          11
+        ]
+      ],
+      "choice_sequences": [
+        [
+          "Register for the event",
+          "I have a ticket"
+        ],
+        [
+          "Register for the event",
+          "I need a ticket"
+        ],
+        [
+          "Find the event room",
+          "Main room"
+        ],
+        [
+          "Find the event room",
+          "Quiet room"
+        ]
+      ],
+      "shared_node_count": {
+        "C0": 1,
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      }
+    },
+    "shared_c": {
+      "entry": 0,
+      "nodes": [
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "C0",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "targets": [
+        [
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          8
+        ],
+        [
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          -1
+        ],
+        [
+          -1
+        ]
+      ],
+      "traces": [
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          11
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          9,
+          11
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          11
+        ]
+      ],
+      "choice_sequences": [
+        [
+          "Register for the event",
+          "I have a ticket",
+          "Main room"
+        ],
+        [
+          "Register for the event",
+          "I have a ticket",
+          "Quiet room"
+        ],
+        [
+          "Register for the event",
+          "I need a ticket",
+          "Main room"
+        ],
+        [
+          "Register for the event",
+          "I need a ticket",
+          "Quiet room"
+        ],
+        [
+          "Find the event room",
+          "Main room"
+        ],
+        [
+          "Find the event room",
+          "Quiet room"
+        ]
+      ],
+      "shared_node_count": {
+        "C0": 1,
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      }
+    }
+  },
+  "native_edit": {
+    "allowed_cases": [
+      "first_splice",
+      "shared_c"
+    ],
+    "node_content_overrides": {
+      "A0": {
+        "text": "<p>Welcome to BranchSplice. Edited in the native editor.</p><p>Literal asset-looking text: images/map.png</p>"
+      }
+    },
+    "unchanged_contract": "All other node content, graph targets, complete traces, choices, ending text, image hashes, and image alias constraints remain unchanged."
+  }
+}

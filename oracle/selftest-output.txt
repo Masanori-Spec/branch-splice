@@ -1,0 +1,44 @@
+test_actual_zip_reader (test_oracle.OracleTests.test_actual_zip_reader) ... ok
+test_all_five_synthetic_cases (test_oracle.OracleTests.test_all_five_synthetic_cases) ... ok
+test_alternative_target_corruption (test_oracle.OracleTests.test_alternative_target_corruption) ... ok
+test_alternative_text_corruption (test_oracle.OracleTests.test_alternative_text_corruption) ... ok
+test_backwards_navigation_rejected (test_oracle.OracleTests.test_backwards_navigation_rejected) ... ok
+test_boolean_is_not_a_target (test_oracle.OracleTests.test_boolean_is_not_a_target) ... ok
+test_custom_feedback_rejected (test_oracle.OracleTests.test_custom_feedback_rejected) ... ok
+test_deliberate_collision_image_alias (test_oracle.OracleTests.test_deliberate_collision_image_alias) ... ok
+test_deliberate_collision_image_substitution (test_oracle.OracleTests.test_deliberate_collision_image_substitution) ... ok
+test_deliberate_in_bounds_graph_corruption (test_oracle.OracleTests.test_deliberate_in_bounds_graph_corruption) ... ok
+test_duplicate_json_keys_rejected (test_oracle.OracleTests.test_duplicate_json_keys_rejected) ... ok
+test_duplicate_zip_entries_rejected (test_oracle.OracleTests.test_duplicate_zip_entries_rejected) ... ok
+test_ending_text_corruption (test_oracle.OracleTests.test_ending_text_corruption) ... ok
+test_external_image_rejected (test_oracle.OracleTests.test_external_image_rejected) ... ok
+test_force_finished_rejected (test_oracle.OracleTests.test_force_finished_rejected) ... ok
+test_image_alt_corruption (test_oracle.OracleTests.test_image_alt_corruption) ... ok
+test_literal_asset_looking_text_must_not_be_rewritten (test_oracle.OracleTests.test_literal_asset_looking_text_must_not_be_rewritten) ... ok
+test_merged_image_paths_may_change_if_bytes_and_aliases_preserved (test_oracle.OracleTests.test_merged_image_paths_may_change_if_bytes_and_aliases_preserved) ... ok
+test_missing_image_bytes (test_oracle.OracleTests.test_missing_image_bytes) ... ok
+test_missing_wrapper_rejected (test_oracle.OracleTests.test_missing_wrapper_rejected) ... ok
+test_native_edit_cli_rejects_module_case_before_reading (test_oracle.OracleTests.test_native_edit_cli_rejects_module_case_before_reading) ... ok
+test_native_edit_has_no_html_normalization (test_oracle.OracleTests.test_native_edit_has_no_html_normalization) ... ok
+test_native_edit_not_allowed_for_modules (test_oracle.OracleTests.test_native_edit_not_allowed_for_modules) ... ok
+test_native_edit_rejects_changes_to_other_nodes (test_oracle.OracleTests.test_native_edit_rejects_changes_to_other_nodes) ... ok
+test_native_edit_variant_passes_both_merged_cases (test_oracle.OracleTests.test_native_edit_variant_passes_both_merged_cases) ... ok
+test_native_edit_variant_rejects_original_text (test_oracle.OracleTests.test_native_edit_variant_rejects_original_text) ... ok
+test_original_variant_rejects_native_edit_text (test_oracle.OracleTests.test_original_variant_rejects_native_edit_text) ... ok
+test_out_of_range_target (test_oracle.OracleTests.test_out_of_range_target) ... ok
+test_path_traversal_rejected (test_oracle.OracleTests.test_path_traversal_rejected) ... ok
+test_positive_target_not_silently_treated_as_ending (test_oracle.OracleTests.test_positive_target_not_silently_treated_as_ending) ... ok
+test_question_text_corruption (test_oracle.OracleTests.test_question_text_corruption) ... ok
+test_randomization_rejected (test_oracle.OracleTests.test_randomization_rejected) ... ok
+test_real_archive_mutation_runner_on_synthetic_baselines (test_oracle.OracleTests.test_real_archive_mutation_runner_on_synthetic_baselines) ... ok
+test_root_flag_nonboolean_rejected (test_oracle.OracleTests.test_root_flag_nonboolean_rejected) ... ok
+test_shared_c_is_not_cloned (test_oracle.OracleTests.test_shared_c_is_not_cloned) ... ok
+test_source_module_still_requires_collision_path (test_oracle.OracleTests.test_source_module_still_requires_collision_path) ... ok
+test_unpinned_images_are_blocked (test_oracle.OracleTests.test_unpinned_images_are_blocked) ... ok
+test_unwrapped_ending_title_rejected_under_revised_contract (test_oracle.OracleTests.test_unwrapped_ending_title_rejected_under_revised_contract) ... ok
+test_zero_feedback_score_is_not_default_ending (test_oracle.OracleTests.test_zero_feedback_score_is_not_default_ending) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.069s
+
+OK

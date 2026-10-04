@@ -1,0 +1,55 @@
+[
+  {
+    "revision": 1,
+    "recorded_utc": "2026-10-04T21:31:54Z",
+    "change": "ending.title exact literal only",
+    "old_literal": "Branch complete",
+    "new_literal": "<p>Branch complete</p>",
+    "old_manifest_file_sha256": "041f18b42dcd8c80d9f5cb09733ad1ddbf6f7c54748d51552a324b9a56fcef00",
+    "new_manifest_file_sha256": "2fd48f8a92ac779ba981d1159fdda74d3e881eedc194f346966d82e13bbd96f5",
+    "reason": "Before native fixture and product merger exist, align explicitly authored title with exact upstream HTML widget enterMode:p. No blanket HTML normalization or comparison weakening.",
+    "source_path": "native/runtime/libraries/H5P.BranchingScenario-1.8/semantics.json",
+    "source_file_sha256": "22a72809ff35a3878d864b8fab3c70a1548569acc21b371e6b3bdf31190a75ec",
+    "source_url": "https://raw.githubusercontent.com/h5p/h5p-branching-scenario/1.8.14/semantics.json",
+    "source_field": {
+      "name": "endScreenTitle",
+      "widget": "html",
+      "enterMode": "p"
+    },
+    "timing_evidence": "Product merge engine was not present. Independent directory check at 2026-10-04T21:31:45Z found no .h5p exports in artifacts/ or fixtures/.",
+    "expected_native_visible_text": "Branch complete",
+    "verification_policy": "Keep exact raw string equality; reject unwrapped title under revised contract."
+  },
+  {
+    "revision": 2,
+    "recorded_utc": "2026-10-04T21:47:21Z",
+    "change": "Add explicit native-edit variant for two merged cases; freeze all three root behaviour flags false",
+    "old_manifest_file_sha256": "2fd48f8a92ac779ba981d1159fdda74d3e881eedc194f346966d82e13bbd96f5",
+    "new_manifest_file_sha256": "fa309ef29793d5b6e4884c022c8a895579d1eae467356e78c13847023b796c9d",
+    "native_edit": {
+      "allowed_cases": [
+        "first_splice",
+        "shared_c"
+      ],
+      "node_content_overrides": {
+        "A0": {
+          "text": "<p>Welcome to BranchSplice. Edited in the native editor.</p><p>Literal asset-looking text: images/map.png</p>"
+        }
+      },
+      "unchanged_contract": "All other node content, graph targets, complete traces, choices, ending text, image hashes, and image alias constraints remain unchanged."
+    },
+    "root_behaviour": {
+      "enableBackwardsNavigation": false,
+      "forceContentFinished": false,
+      "randomizeBranchingQuestions": false
+    },
+    "reason": "The verification plan specified an exact native-editor A0 edit variant and bounded root navigation/finish behavior before fixtures or merger exist. No output-derived values or HTML normalization. Merged media paths remain flexible, but hash and distinct-reference checks are unchanged.",
+    "source_path": "native/runtime/libraries/H5P.BranchingScenario-1.8/semantics.json",
+    "source_file_sha256": "22a72809ff35a3878d864b8fab3c70a1548569acc21b371e6b3bdf31190a75ec",
+    "source_url": "https://raw.githubusercontent.com/h5p/h5p-branching-scenario/1.8.14/semantics.json",
+    "timing_evidence": {
+      "export_paths_under_artifacts_and_fixtures": [],
+      "construction_status": "No native artifacts or merger exist; official 71-library closure CI gate pending."
+    }
+  }
+]
