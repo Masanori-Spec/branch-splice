@@ -2,7 +2,7 @@
 
 Connect independently authored H5P Branching Scenario modules without rebuilding their internal branches. Inspect every resulting route and image mapping, then download one editable H5P plus a JSON provenance manifest and readable connection report.
 
-**Verified bounded prototype.** The actual browser downloads were imported into the native H5P editor, A0 was edited, saved and exported, and every **4-route and 6-route** player path passed with its original images and host opening. Accepted [code commit](/Masanori-Spec/branch-splice/commit/3de793291fb06677edb276388ffab7dbcf0011b6) · [product verification run](https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803) · [native authoring run](https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548791).
+**Verified bounded prototype.** The actual browser downloads were imported into the native H5P editor, A0 was edited, saved and exported, and every **4-route and 6-route** player path passed with its original images and host opening. Accepted [code commit](https://github.com/Masanori-Spec/branch-splice/commit/3de793291fb06677edb276388ffab7dbcf0011b6) · [product verification run](https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803) · [native authoring run](https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548791).
 
 67 product tests, 70 independent oracle tests and 8 local native-server checks pass. Both Node 22/24 static jobs and the sandboxed Chrome browser/native gate are green. See the [verification record](docs/verification.md) for exact hashes, reviewed evidence and unverified scope.
 
