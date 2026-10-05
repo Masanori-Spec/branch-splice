@@ -79,7 +79,7 @@ Example upload for one route (repeat with each distinct directory/name):
     if-no-files-found: warn
 ```
 
-This script was syntax-checked and statically reviewed when authored. A successful hosted run and its artifacts are required before describing native merged-package edit/save/replay as passed.
+The complete hosted run passed at code commit `3de793291fb06677edb276388ffab7dbcf0011b6`: [run37246548803](https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803). All four first-case routes and six shared-C routes were then visually reviewed; exact native file entries were independently reconstructed from sanitized evidence and rechecked. This establishes the pinned synthetic acceptance cases only.
 
 ## Public evidence boundary
 

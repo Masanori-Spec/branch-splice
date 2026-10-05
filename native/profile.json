@@ -23,7 +23,7 @@
     "H5P.Image": "1.1.22"
   },
   "editorLibrary": "H5PEditor.BranchingScenario 1.5.7",
-  "status": "native-single-node-and-A-B-C-author-import-edit-export-replay-passed; merged-product-acceptance-pending",
+  "status": "native-authoring-and-actual-product-download-import-edit-save-export-all-four-and-six-routes-passed",
   "supplementalLibraries": {
     "url": "https://api.h5p.org/v1/content-types/H5P.InteractiveVideo",
     "sha256": "b1bc055a58c9fe903ab7ab63af4700dae06ccc2d754ae1c3491670acb631c535",
@@ -32,5 +32,10 @@
   "nativeFixtureEvidence": {
     "commit": "7e096b9e356661b868771112d9c569077e07393f",
     "run": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535"
+  },
+  "nativeProductEvidence": {
+    "commit": "3de793291fb06677edb276388ffab7dbcf0011b6",
+    "run": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803",
+    "verification": "../docs/verification.json"
   }
 }
