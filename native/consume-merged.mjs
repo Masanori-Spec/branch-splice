@@ -223,9 +223,11 @@ async function importEditDownload(testCase, input) {
   const after = await activePage.evaluate(() => window.nativeEditor.iframeWindow.H5PEditor.Html.current.ckeditor.getData());
   assert.equal(after, editedHTML);
   await activePage.locator('#save-h5p').focus();
-  await field.locator('[contenteditable=true]').first().scrollIntoViewIfNeeded();
+  const visibleEditable=field.locator('[contenteditable=true]:visible');
+  await expect(visibleEditable).toHaveCount(1);
+  await visibleEditable.scrollIntoViewIfNeeded();
   currentCase.nativeEdit = {node: 'A0', before, after,
-    ...await capture(directory, '02-native-a0-edit', [field.locator('[contenteditable=true]').first()])};
+    ...await capture(directory, '02-native-a0-edit', [visibleEditable])};
   await editor.locator('.editor-overlay-header button.button-blue').click();
   await editor.locator('.editor-overlay').waitFor({state: 'hidden'});
   await activePage.locator('#save-h5p').click();
