@@ -21,7 +21,7 @@ The official H5P Hub bundle downloaded for this experiment contains BranchingSce
 
 Exact URLs, hashes and installed-library file hashes are in native/profile.json and native/library-profile.json. Setup halts when official downloaded bytes do not match the profile. It does not silently adopt a new patch.
 
-Do not infer [Lumi Desktop compatibility](https://github.com/Lumieducation/Lumi/issues/2738), current-master compatibility, or successful native browser interaction from successful server startup. Native single-node author/import/edit/save/export/replay and all three four-node fixture authoring/reimport/playback passed in sandboxed CI at [run37239898535](https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535). Merged composer downloads still require their own native acceptance results.
+Do not infer [Lumi Desktop compatibility](https://github.com/Lumieducation/Lumi/issues/2738), current-master compatibility, or successful native browser interaction from successful server startup. Native single-node author/import/edit/save/export/replay and all three four-node fixture authoring/reimport/playback passed in sandboxed CI at [run37239898535](https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535). Actual composer downloads passed their own import/edit/save/export and all4/6 route playback checks in [run37246548803](https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803). This is a verified bounded prototype, with broader adoption and consumer compatibility still unvalidated.
 
 ## Gate before implementation
 
@@ -31,4 +31,4 @@ Do not infer [Lumi Desktop compatibility](https://github.com/Lumieducation/Lumi/
 4. Only after this consumer path works is the merger implemented
 5. Actual composer downloads must later pass independent file reading, graph/media corruption negative controls, native import/edit/save/export, and playback of all four and six complete routes
 
-No product readiness claim is made while these gates are pending.
+All five gates above passed for the frozen synthetic acceptance cases. See [verification.md](verification.md) for the exact accepted code revision and limits.

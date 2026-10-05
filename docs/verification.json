@@ -1,0 +1,220 @@
+{
+  "status": "PASS",
+  "classification": "Verified bounded prototype; synthetic acceptance only",
+  "verifiedCodeCommit": "3de793291fb06677edb276388ffab7dbcf0011b6",
+  "productRun": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803",
+  "nativeAuthoringRun": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548791",
+  "reviewedUtc": "2026-10-05T00:26:52Z",
+  "standalone": {
+    "path": "dist/index.html",
+    "bytes": 661162,
+    "sha256": "aabd6290b4773f8f4be9eb76d568a362c9d94408f4a6911dda0be29e322c388f",
+    "noBundledH5PSoftware": true
+  },
+  "profile": {
+    "server": "@lumieducation/h5p-server@10.0.4",
+    "coreApi": "1.27",
+    "branchingScenario": "1.8.14",
+    "branchingQuestion": "1.0.20",
+    "advancedText": "1.1.14",
+    "image": "1.1.22",
+    "branchingScenarioEditor": "1.5.7"
+  },
+  "automatedChecks": {
+    "productTests": 67,
+    "independentOracleTests": 70,
+    "nativeLocalServerChecks": 8,
+    "staticNodeMatrix": [
+      "22",
+      "24.16.0"
+    ],
+    "browserVersion": "154.0.8037.57",
+    "runner": "ubuntu-22.04",
+    "browserChecks": [
+      "Japanese desktop no horizontal page overflow",
+      "Actual local-file selection executes in real Worker and validates 12 nodes / 4 routes",
+      "Both decoded map previews, collision provenance, all 12 node mappings and keyboard tabs",
+      "English interface retains original authored source text",
+      "first actual UI H5P/JSON/text downloads, archive hash, independent oracle and negative controls",
+      "shared actual UI H5P/JSON/text downloads, archive hash, independent oracle and negative controls",
+      "Input change immediately disables old downloads; repeated validation click yields one current valid result",
+      "Cycle fails closed and exports stay disabled",
+      "Unreachable donor fails closed",
+      "Host change clears connections and rejects a nonempty donor start",
+      "Malformed packages show a recoverable error without retaining previous output",
+      "Reset cancels a live Worker file load without stale resurrection",
+      "Repeated file selections settle on current input",
+      "Japanese mobile no horizontal page overflow",
+      "Japanese mobile assets no horizontal page overflow",
+      "Removing a module revokes old export state",
+      "Standalone HTML works from file:// with local H5P inputs, embedded Worker and no network"
+    ],
+    "pageErrors": [],
+    "consoleErrors": [],
+    "externalRequests": []
+  },
+  "cases": [
+    {
+      "name": "first",
+      "status": "PASS",
+      "nodeCount": 12,
+      "routeCount": 4,
+      "allRoutesPassed": true,
+      "actualUiDownload": {
+        "sha256": "0e0a4f62c598d3bdaea9df7bbabbee3bdc2bc5327f068d6039971debd5f76c52",
+        "size": 7935490,
+        "routeCount": 4
+      },
+      "actualNativeEditedDownload": {
+        "bytes": 7869106,
+        "sha256": "6b7449c5424ec1b849b920a0a1ead52f1db056674c05258ce5ae5fe831b85911"
+      },
+      "independentProvenanceAssertions": 8353,
+      "unchangedLibraryResourceFiles": 2532,
+      "exactNativeReconstructedEntries": 2536,
+      "nativeReconstruction": "All file entries match the actual download; ZIP container encoding differs.",
+      "uiReconstruction": "Exact actual-download archive SHA256 reproduced from sanitized evidence and official local files.",
+      "pageErrors": [],
+      "httpErrors": [],
+      "externalResponses": [],
+      "traces": [
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          11
+        ]
+      ]
+    },
+    {
+      "name": "shared",
+      "status": "PASS",
+      "nodeCount": 12,
+      "routeCount": 6,
+      "allRoutesPassed": true,
+      "actualUiDownload": {
+        "sha256": "9791cf4db65e1ee2acf8baabd2f6b8ec4f59c1430adbc680bd6617c2b7c5ca7d",
+        "size": 7935488,
+        "routeCount": 6
+      },
+      "actualNativeEditedDownload": {
+        "bytes": 7869111,
+        "sha256": "0cc69a2a6810a290659c2d53091437044c4d265d9453f6fff65fe9562aa7ca60"
+      },
+      "independentProvenanceAssertions": 8391,
+      "unchangedLibraryResourceFiles": 2532,
+      "exactNativeReconstructedEntries": 2536,
+      "nativeReconstruction": "All file entries match the actual download; ZIP container encoding differs.",
+      "uiReconstruction": "Exact actual-download archive SHA256 reproduced from sanitized evidence and official local files.",
+      "pageErrors": [],
+      "httpErrors": [],
+      "externalResponses": [],
+      "traces": [
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          11
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          9,
+          11
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          10
+        ],
+        [
+          0,
+          1,
+          3,
+          8,
+          9,
+          11
+        ]
+      ]
+    }
+  ],
+  "visualReview": "All ten native route contact sheets, both imported graphs/A0 edits, distinct images, host openings/endings, desktop/shared and responsive390px screenshots reviewed",
+  "distributionBoundary": "Only authored JSON/PNGs, screenshots, hashes and reports are published. H5P/native library bytes, traces and HTML snapshots remain private temporary verification material.",
+  "unverified": [
+    "Other H5P/LMS/Desktop/core/library versions",
+    "Real-world learner or customer deployment",
+    "Universal hostile-file safety or full raster codec decoding",
+    "Commercial demand, willingness to pay or time-saving claims"
+  ],
+  "maintenance": [
+    "Optional remote native Help is blocked by CSP; no external response is accepted.",
+    "Pinned native harness npm tree has documented remaining advisories; do not expose it as a production upload service.",
+    "GitHub currently runs deprecated Node20 v4 action runtimes under Node24; action-version maintenance remains future work."
+  ],
+  "nativeEditedReaderReentry": {
+    "status": "PASS",
+    "scope": "Both private exact-entry native-edited reconstructions were accepted again by the bounded archive reader, with 12 nodes and4/6 routes",
+    "originalNativeContainerReparsed": false
+  }
+}
