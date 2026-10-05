@@ -17,6 +17,13 @@ page.on('pageerror',e=>report.pageErrors.push(e.message));page.on('request',r=>{
 await context.route('**/*',route=>{const url=route.request().url();if(/^(http:\/\/127\.0\.0\.1:8080|data:|blob:|about:)/.test(url))return route.continue();report.blockedExternalRequests.push(url);return route.abort('blockedbyclient')});
 page.on('response',r=>{if(!r.url().startsWith('http://127.0.0.1:8080'))report.externalRequests.push(r.url())});
 const f=page.frameLocator('iframe.h5p-editor-iframe');
+async function dismissTours(){
+ const gotIt=f.getByRole('button',{name:'I got it',exact:true});
+ for(let n=0;n<4;n++){if(!await gotIt.isVisible())return;await gotIt.click();await gotIt.waitFor({state:'hidden'});report.steps.push('Dismissed visible native onboarding tour');}
+}
+async function nativeClick(target){
+ for(let attempt=0;attempt<3;attempt++){await dismissTours();try{await target.click({timeout:4000});return}catch(error){if(error.name!=='TimeoutError'||!await f.getByRole('button',{name:'I got it',exact:true}).isVisible()||attempt===2)throw error;await dismissTours();}}
+}
 async function dump(name){await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});for(const[i,frame]of page.frames().entries())await fs.writeFile(path.join(out,name+`-frame${i}.html`),await frame.content());}
 async function expandAncestors(target){
  const groups=target.locator('xpath=ancestor::fieldset[contains(@class,"group")]');
@@ -38,11 +45,11 @@ async function chooseDrop(position){
  const nodes=f.locator('.dropzone');let candidates=[];for(let i=0;i<await nodes.count();i++){const b=await nodes.nth(i).boundingBox();if(b)candidates.push({i,...b});}
  assert(candidates.length,'No native dropzone');
  candidates.sort(position==='left'?(a,b)=>a.x-b.x:position==='right'?(a,b)=>b.x-a.x:(a,b)=>b.y-a.y);
- await nodes.nth(candidates[0].i).click();
+ await nativeClick(nodes.nth(candidates[0].i));
 }
 async function add(kind,position,token){
  const tour=f.getByRole('button',{name:'I got it',exact:true});if(await tour.isVisible())await tour.click();
- await f.locator(`.content-type-buttons li.${kind==='text'?'advancedtext':kind}`).click();await chooseDrop(position);await f.locator('.editor-overlay').waitFor();
+ await nativeClick(f.locator(`.content-type-buttons li.${kind==='text'?'advancedtext':kind}`));await chooseDrop(position);await f.locator('.editor-overlay').waitFor();
  const v=expected.node_content[token];
  if(kind==='text')await rich('.editor-overlay-semantics .field-name-text',v.text);
  if(kind==='branchingquestion'){
@@ -54,17 +61,17 @@ async function add(kind,position,token){
   const picker=page.waitForEvent('filechooser');await f.locator('.editor-overlay-semantics .field-name-file .add').click();await(await picker).setFiles(`fixtures/${v.image}/map.png`);
   await f.locator('.editor-overlay-semantics .field-name-file .thumbnail img').waitFor();await f.locator('.editor-overlay-semantics .field-name-alt input').fill(v.alt);
  }
- await f.locator('.editor-overlay-header button.button-blue').click();await f.locator('.editor-overlay').waitFor({state:'hidden'});report.steps.push(`Native node ${token} authored`);
+ await nativeClick(f.locator('.editor-overlay-header button.button-blue'));await f.locator('.editor-overlay').waitFor({state:'hidden'});report.steps.push(`Native node ${token} authored`);
 }
 async function settings(module){
- await f.locator('.bs-editor-settings-tab').click();
+ await nativeClick(f.locator('.bs-editor-settings-tab'));
  await rich('#settings .field-name-endScreenTitle',expected.ending.title);
  await rich('#settings .field-name-endScreenSubtitle',expected.ending.subtitle);
  if(module==='A'){
   await rich('#settings .field-name-startScreenTitle','<p>Event staff orientation</p>');
   await rich('#settings .field-name-startScreenSubtitle','<p>Choose the task you need today.</p>');
  }
- await f.locator('.bs-editor-content-tab').click();
+ await nativeClick(f.locator('.bs-editor-content-tab'));
 }
 async function download(id,name){const event=page.waitForEvent('download');await page.getByRole('link',{name:'Download',exact:true}).click();const d=await event;const p=path.join(out,name);await d.saveAs(p);return p;}
 async function replayModule(id,module){
