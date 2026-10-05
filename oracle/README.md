@@ -74,15 +74,16 @@ python3 oracle/mutation_checks.py PATH_TO_NATIVE_EDITED_SHARED_C.h5p --case shar
 
 The `PATH_TO_*` names are placeholders, not claimed-existing artifacts. The CLI
 returns 0 on static PASS, 1 on a failed supplied-archive check, and 2 when expected
-image hashes are not pinned. Missing native/product artifacts are **NOT_RUN** in
-the delivery status, not a pass or failure.
+image hashes are not pinned. A missing supplied artifact is **NOT_RUN**, not a pass or failure. The accepted
+actual UI and native-edited evidence is now recorded in ../docs/verification.md.
 
 `mutation_checks.py` first requires the unmodified real artifact to pass. It then
 changes A2's valid target from B0 (4) to C0 (8), and independently replaces B0's
 referenced PNG bytes with C0's bytes. Both must fail for the intended reason. This
 checks graph and collision-image false positives without relying on product
-mutation helpers. The real-artifact negative controls remain NOT_RUN until real
-product artifacts exist, even though their runner has synthetic self-tests.
+mutation helpers. The accepted actual UI downloads passed these real-artifact controls for both
+first_splice and shared_c. Native editing/playback is separately evidenced in
+../docs/verification.md; it is not performed by this static checker.
 
 Do not update the manifest to match an unexpected product result. Investigate
 first. If native editor serialization changes insignificant HTML, record and

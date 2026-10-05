@@ -1,10 +1,10 @@
 {
-  "recorded_utc": "2026-10-04T23:25:00Z",
+  "recorded_utc": "2026-10-05T00:26:52Z",
   "checker_selftests": {
     "status": "PASS",
-    "tests": 39,
-    "evidence": "selftest-output.txt",
-    "scope": "Synthetic checker-only packages, no product engine or native browser execution"
+    "tests": 70,
+    "evidence": "all-selftest-output.txt",
+    "scope": "39 frozen semantic-oracle tests plus31 standalone provenance-checker tests; synthetic checker fixtures, not browser execution"
   },
   "original_image_hash_pins": {
     "status": "PASS",
@@ -78,32 +78,82 @@
     ],
     "controls": 4,
     "result": "On each original artifact, valid in-bounds A2 graph corruption and wrong colliding image bytes were rejected for the intended reason. Baseline artifacts passed first.",
-    "native_edited_variants": "NOT_RUN"
+    "native_edited_variants": "Frozen semantic oracle verifies native-edited exports; corruption controls were exercised on actual original UI downloads"
   },
   "native_player_editor_gate": {
     "status": "PASS_REPORTED_BY_NATIVE_GATE",
-    "scope": "Native authoring, reimport and six original-module routes only. Merged-product native execution remains pending.",
+    "scope": "Native original-module authoring/reimport plus the separately recorded accepted merged product gate",
     "run_url": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37239898535",
     "commit": "7e096b9e356661b868771112d9c569077e07393f",
     "local_evidence_directory": "../branch-splice-output/run6-fixtures",
     "report_sha256": "104a3776a20dd05652380ad689dd7c94b99a70cec9ca2e64afc753100777f20f",
     "independent_report_review": "Read report.json; PASS, six module routes, matching fixture archive hashes, and empty page/external/blocked/attempted request error lists confirmed.",
-    "screenshot_pixel_review": "Native screenshots, graph and distinct image pixels reviewed and accepted by the native evidence publisher. No personal screenshot/pixel review or browser execution claimed by this oracle.",
+    "screenshot_pixel_review": "Separate native evidence review accepted the original module pixels. This static checker does not perform browser or pixel verification.",
     "personally_executed_browser_gate": false,
     "personally_reviewed_native_pixels": false
   },
   "contract_revision": 2,
   "native_edited_merged_archives": {
-    "status": "NOT_RUN",
-    "reason": "Native-edited merged artifacts have not yet been supplied"
+    "status": "PASS",
+    "scope": "Actual native downloads passed the independent native-edit oracle in CI; all2536 entries reconstructed exactly for independent local recheck. ZIP container encoding differs.",
+    "run_url": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803",
+    "commit": "3de793291fb06677edb276388ffab7dbcf0011b6",
+    "cases": [
+      {
+        "name": "first",
+        "nodeCount": 12,
+        "routeCount": 4,
+        "actualNativeEditedDownload": {
+          "bytes": 7869106,
+          "sha256": "6b7449c5424ec1b849b920a0a1ead52f1db056674c05258ce5ae5fe831b85911"
+        },
+        "exactNativeReconstructedEntries": 2536
+      },
+      {
+        "name": "shared",
+        "nodeCount": 12,
+        "routeCount": 6,
+        "actualNativeEditedDownload": {
+          "bytes": 7869111,
+          "sha256": "0cc69a2a6810a290659c2d53091437044c4d265d9453f6fff65fe9562aa7ca60"
+        },
+        "exactNativeReconstructedEntries": 2536
+      }
+    ]
   },
   "ui_export_downloads": {
-    "status": "NOT_RUN",
-    "reason": "Actual merged artifacts downloaded through product UI have not been supplied"
+    "status": "PASS",
+    "scope": "Actual browser H5P, JSON and text downloads; hashes, handwritten semantic oracle, full-field provenance and corruption controls. Both UI ZIPs independently reconstructed hash-for-hash.",
+    "run_url": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803",
+    "commit": "3de793291fb06677edb276388ffab7dbcf0011b6",
+    "cases": [
+      {
+        "name": "first",
+        "actualUiDownload": {
+          "sha256": "0e0a4f62c598d3bdaea9df7bbabbee3bdc2bc5327f068d6039971debd5f76c52",
+          "size": 7935490,
+          "routeCount": 4
+        },
+        "independentProvenanceAssertions": 8353
+      },
+      {
+        "name": "shared",
+        "actualUiDownload": {
+          "sha256": "9791cf4db65e1ee2acf8baabd2f6b8ec4f59c1430adbc680bd6617c2b7c5ca7d",
+          "size": 7935488,
+          "routeCount": 6
+        },
+        "independentProvenanceAssertions": 8391
+      }
+    ]
   },
   "native_merged_browser_gate": {
-    "status": "NOT_RUN",
-    "reason": "Merged-artifact native reimport, route playback, native edit/save/re-export evidence pending; original module gate is separate"
+    "status": "PASS",
+    "run_url": "https://github.com/Masanori-Spec/branch-splice/actions/runs/37246548803",
+    "commit": "3de793291fb06677edb276388ffab7dbcf0011b6",
+    "complete_routes": 10,
+    "visual_review": "All4+6 route contact sheets, imported graphs, A0 edits, openings, endings and distinct images reviewed",
+    "scope": "Pinned synthetic fixtures only; not a claim about every export or H5P consumer"
   },
   "current_manifest_file_sha256": "fa309ef29793d5b6e4884c022c8a895579d1eae467356e78c13847023b796c9d",
   "reusable_provenance_checker": {
@@ -147,5 +197,6 @@
       }
     ],
     "browser_native_execution": "NOT_RUN_BY_THIS_CHECKER"
-  }
+  },
+  "verification_record": "../docs/verification.json"
 }
